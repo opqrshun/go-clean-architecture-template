@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"go-clean-architecture/domain"
-	repo "go-clean-architecture/infrastructure/file"
+	repo "go-clean-architecture/infrastructure/memory"
 	"go-clean-architecture/usecase"
 )
 
@@ -21,7 +21,7 @@ func TestAddEntitySuccess(t *testing.T) {
 	}
 
 	if r.Id != 1 {
-		t.Fatal("failed test")
+		t.Fatalf("failed test %v", r.Id)
 	}
 
 	entities, err := usecase.GetAll()

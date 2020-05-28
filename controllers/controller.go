@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"go-clean-architecture/domain"
-	repo "go-clean-architecture/infrastructure/file"
+	repo "go-clean-architecture/infrastructure/memory"
 	"go-clean-architecture/usecase"
 	"strconv"
 )

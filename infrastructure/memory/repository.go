@@ -1,4 +1,4 @@
-package file
+package memory
 
 import (
 	"errors"
@@ -30,13 +30,10 @@ func (repo *EntityRepository) Store(entity domain.Entity) (id int, err error) {
 
 func (repo *EntityRepository) FindById(identifier int) (entity domain.Entity, err error) {
 
-	identifier = identifier - 1
-	// var err error
-	// var Entity domain.Entity
-	if repo.Index < identifier {
+	entity, ok := repo.entities[identifier]
+
+	if !ok {
 		err = errors.New("not found")
-	} else {
-		entity = repo.entities[identifier]
 	}
 	return
 }

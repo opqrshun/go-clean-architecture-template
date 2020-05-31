@@ -20,9 +20,9 @@ func NewEntityController() *EntityController {
 }
 
 func (controller *EntityController) Create(c Context) {
-	e := domain.Entity{}
-	c.Bind(&e)
-	entity, err := controller.usecase.Store(e)
+	request_entity := domain.Entity{}
+	c.Bind(&request_entity)
+	entity, err := controller.usecase.Store(request_entity)
 	if err != nil {
 		c.JSON(500, NewError(err))
 		return

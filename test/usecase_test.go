@@ -10,29 +10,31 @@ import (
 	"go-clean-architecture/usecase"
 )
 
-func TestAddEntitySuccess(t *testing.T) {
+func TestStore(t *testing.T) {
 
 	usecase := usecase.Usecase{
 		EntityRepository: repo.NewEntityRepository(),
 	}
 
 	Entity := domain.Entity{}
-	r, err := usecase.Store(Entity)
-	if err != nil {
-		t.Fatalf("failed test %#v", err)
+	r, _ := usecase.Store(Entity)
+	assert.Equal(t, r.Id, 1)
+
+}
+
+func TestGetAll(t *testing.T) {
+
+	usecase := usecase.Usecase{
+		EntityRepository: repo.NewEntityRepository(),
 	}
 
-	if r.Id != 1 {
-		t.Fatalf("failed test %v", r.Id)
-	}
+	Entity := domain.Entity{}
+	Entity2 := domain.Entity{}
+	usecase.Store(Entity)
+	usecase.Store(Entity2)
 
-	entities, err := usecase.GetAll()
-	if err != nil {
-		t.Fatalf("failed test %#v", err)
-	}
-	if entities[0].Id != 1 {
-		t.Fatal("failed test")
-	}
+	entities, _ := usecase.GetAll()
+	assert.Equal(t, len(entities), 2)
 }
 
 func TestDelete(t *testing.T) {

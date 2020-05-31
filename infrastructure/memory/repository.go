@@ -1,7 +1,6 @@
 package memory
 
 import (
-	"errors"
 	"go-clean-architecture/domain"
 	"sort"
 	// "go-clean-architecture/domain"
@@ -20,6 +19,7 @@ func NewEntityRepository() *EntityRepository {
 }
 
 func (repo *EntityRepository) Store(entity domain.Entity) (id int, err error) {
+	// todo refactoring
 	id = repo.Index + 1
 	repo.Index = id
 	entity.Id = id
@@ -28,17 +28,18 @@ func (repo *EntityRepository) Store(entity domain.Entity) (id int, err error) {
 	return
 }
 
-func (repo *EntityRepository) FindById(identifier int) (entity domain.Entity, err error) {
+func (repo *EntityRepository) GetById(identifier int) (entity domain.Entity, err error) {
 
 	entity, ok := repo.entities[identifier]
 
 	if !ok {
-		err = errors.New("not found")
+		err = domain.ErrNotFound
 	}
 	return
 }
 
-func (repo *EntityRepository) FindAll() (entities []domain.Entity, err error) {
+func (repo *EntityRepository) GetAll() (entities []domain.Entity, err error) {
+	//sort map key
 	var keys []int
 	for k := range repo.entities {
 		keys = append(keys, k)
@@ -47,5 +48,18 @@ func (repo *EntityRepository) FindAll() (entities []domain.Entity, err error) {
 	for _, k := range keys {
 		entities = append(entities, repo.entities[k])
 	}
+	return
+}
+
+//Delete
+func (repo *EntityRepository) Delete(identifier int) (err error) {
+	_, ok := repo.entities[identifier]
+
+	if !ok {
+		err = domain.ErrNotFound
+		return
+	}
+
+	delete(repo.entities, identifier)
 	return
 }

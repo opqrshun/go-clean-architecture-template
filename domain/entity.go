@@ -1,5 +1,8 @@
 package domain
 
+import "time"
+
 type Entity struct {
-	Id int
+	Id        int
+	DeletedAt time.Time
 }

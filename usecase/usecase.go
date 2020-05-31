@@ -11,16 +11,21 @@ func (usecase *Usecase) Store(e domain.Entity) (entity domain.Entity, err error)
 	if err != nil {
 		return
 	}
-	entity, err = usecase.EntityRepository.FindById(identifier)
+	entity, err = usecase.EntityRepository.GetById(identifier)
 	return
 }
 
 func (usecase *Usecase) GetAll() (entities []domain.Entity, err error) {
-	entities, err = usecase.EntityRepository.FindAll()
+	entities, err = usecase.EntityRepository.GetAll()
 	return
 }
 
 func (usecase *Usecase) GetById(identifier int) (entity domain.Entity, err error) {
-	entity, err = usecase.EntityRepository.FindById(identifier)
+	entity, err = usecase.EntityRepository.GetById(identifier)
+	return
+}
+
+func (usecase *Usecase) Delete(identifier int) (err error) {
+	err = usecase.EntityRepository.Delete(identifier)
 	return
 }

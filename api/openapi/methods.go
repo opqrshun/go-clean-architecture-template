@@ -16,8 +16,8 @@ func GetAll(c *gin.Context) {
 	EntityController.GetAll(c)
 }
 
-func GetById(c *gin.Context) {
-	EntityController.GetById(c)
+func GetByID(c *gin.Context) {
+	EntityController.GetByID(c)
 }
 
 // Delete -

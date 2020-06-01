@@ -3,8 +3,8 @@ package domain
 import "time"
 
 type Entity struct {
-	Id   int    `json:"id"`
-	Text string `json:"text"`
+	ID   int    `json:"id"`
+	Text string `json:"text" validate:"required"`
 
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`

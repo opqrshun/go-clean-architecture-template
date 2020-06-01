@@ -22,13 +22,13 @@ func (repo *EntityRepository) Store(entity domain.Entity) (id int, err error) {
 	// todo refactoring
 	id = repo.Index + 1
 	repo.Index = id
-	entity.Id = id
+	entity.ID = id
 	repo.entities[id] = entity
 
 	return
 }
 
-func (repo *EntityRepository) GetById(identifier int) (entity domain.Entity, err error) {
+func (repo *EntityRepository) GetByID(identifier int) (entity domain.Entity, err error) {
 
 	entity, ok := repo.entities[identifier]
 

@@ -84,9 +84,9 @@ var routes = Routes{
 	},
 
 	{
-		"GetById",
+		"GetByID",
 		http.MethodGet,
 		"/entities/:id",
-		GetById,
+		GetByID,
 	},
 }

@@ -28,7 +28,12 @@ func NewEntityController() *EntityController {
 //Create Entity
 func (controller *EntityController) Create(c Context) {
 	requestEntity := domain.Entity{}
-	c.Bind(&requestEntity)
+	err := c.Bind(&requestEntity)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, NewError(err))
+		return
+	}
 	entity, err := controller.usecase.Store(requestEntity)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))

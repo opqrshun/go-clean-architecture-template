@@ -15,10 +15,10 @@ ENV CGO_ENABLED=0
 # RUN go install -v ./...
 RUN go mod init github/ttaki/go-clean-architecture
 
-RUN go build -o openapi .
+RUN go build -o go-clean-architecture .
 
 # FROM scratch AS runtime
 # ENV GIN_MODE=release
 # COPY --from=build /go/src/openapi ./
 EXPOSE 8080/tcp
-ENTRYPOINT ["./openapi"]
+ENTRYPOINT ["./go-clean-architecture"]

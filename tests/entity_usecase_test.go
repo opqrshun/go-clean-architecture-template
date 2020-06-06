@@ -12,7 +12,7 @@ import (
 
 func TestStore(t *testing.T) {
 
-	usecase := usecase.Usecase{
+	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),
 	}
 
@@ -24,7 +24,7 @@ func TestStore(t *testing.T) {
 
 func TestUpdate(t *testing.T) {
 
-	usecase := usecase.Usecase{
+	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),
 	}
 	entityTestData := domain.Entity{Text: "test text"}
@@ -41,7 +41,7 @@ func TestUpdate(t *testing.T) {
 
 func TestGetAll(t *testing.T) {
 
-	usecase := usecase.Usecase{
+	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),
 	}
 
@@ -56,7 +56,7 @@ func TestGetAll(t *testing.T) {
 
 func TestDelete(t *testing.T) {
 
-	usecase := usecase.Usecase{
+	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),
 	}
 

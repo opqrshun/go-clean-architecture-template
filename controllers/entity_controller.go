@@ -13,13 +13,13 @@ import (
 
 //EntityController type
 type EntityController struct {
-	usecase usecase.Usecase
+	usecase usecase.EntityUsecase
 }
 
 //NewEntityController New
 func NewEntityController() *EntityController {
 	return &EntityController{
-		usecase: usecase.Usecase{
+		usecase: usecase.EntityUsecase{
 			EntityRepository: repo.NewEntityRepository(),
 		},
 	}

@@ -3,6 +3,7 @@ package memory
 import (
 	"go-clean-architecture/domain"
 	"sort"
+	"time"
 	// "go-clean-architecture/domain"
 )
 
@@ -23,8 +24,18 @@ func (repo *EntityRepository) Store(entity domain.Entity) (id int, err error) {
 	id = repo.Index + 1
 	repo.Index = id
 	entity.ID = id
+	entity.CreatedAt = time.Now()
+	entity.UpdatedAt = time.Now()
 	repo.entities[id] = entity
 
+	return
+}
+
+func (repo *EntityRepository) Update(entity domain.Entity) (id int, err error) {
+	entity.UpdatedAt = time.Now()
+	repo.entities[entity.ID] = entity
+
+	id = entity.ID
 	return
 }
 

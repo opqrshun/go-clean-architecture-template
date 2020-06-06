@@ -42,6 +42,26 @@ func (controller *EntityController) Create(c Context) {
 	c.JSON(http.StatusCreated, entity)
 }
 
+//Create Entity
+func (controller *EntityController) Update(c Context) {
+
+	validatedEntity := domain.EntityForUpdate{}
+	err := c.Bind(&validatedEntity)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, NewError(err))
+		return
+	}
+	requestEntity := domain.Entity{}
+	err = c.Bind(&requestEntity)
+	entity, err := controller.usecase.Update(requestEntity)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, NewError(err))
+		return
+	}
+	c.JSON(http.StatusOK, entity)
+}
+
 //GetAll Entity
 func (controller *EntityController) GetAll(c Context) {
 	entities, err := controller.usecase.GetAll()

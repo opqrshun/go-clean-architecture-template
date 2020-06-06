@@ -1,4 +1,4 @@
-package main
+package tests
 
 import (
 	"bytes"
@@ -9,6 +9,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"go-clean-architecture/tests"
 )
 
 func TestPingRoute(t *testing.T) {
@@ -22,10 +24,6 @@ func TestPingRoute(t *testing.T) {
 	assert.Equal(t, "null", w.Body.String())
 }
 
-type InvalidEntity struct {
-	ID int `json:"id"`
-}
-
 func TestCreateInvalidRoute(t *testing.T) {
 	router := sw.NewRouter()
 
@@ -36,16 +34,11 @@ func TestCreateInvalidRoute(t *testing.T) {
 	assert.Equal(t, 400, w.Code)
 	// assert.Equal(t, "null", w.Body.String())
 
-	requestData, _ := json.Marshal(InvalidEntity{})
+	requestData, _ := json.Marshal(tests.InvalidEntity{})
 	req, _ = http.NewRequest("POST", "/entities", bytes.NewBuffer(requestData))
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, 400, w.Code)
-}
-
-type Entity struct {
-	ID   int    `json:"id"`
-	Text string `json:"text"`
 }
 
 func TestCreateRoute(t *testing.T) {
@@ -53,7 +46,7 @@ func TestCreateRoute(t *testing.T) {
 
 	w := httptest.NewRecorder()
 
-	requestData, _ := json.Marshal(Entity{Text: "test text"})
+	requestData, _ := json.Marshal(tests.Entity{Text: "test text"})
 
 	req, _ := http.NewRequest("POST", "/entities", bytes.NewBuffer(requestData))
 	req.Header.Set("Content-Type", "application/json")

@@ -15,6 +15,15 @@ func (usecase *Usecase) Store(e domain.Entity) (entity domain.Entity, err error)
 	return
 }
 
+func (usecase *Usecase) Update(e domain.Entity) (entity domain.Entity, err error) {
+	identifier, err := usecase.EntityRepository.Update(e)
+	if err != nil {
+		return
+	}
+	entity, err = usecase.EntityRepository.GetByID(identifier)
+	return
+}
+
 func (usecase *Usecase) GetAll() (entities []domain.Entity, err error) {
 	entities, err = usecase.EntityRepository.GetAll()
 	return

@@ -1,4 +1,4 @@
-package main
+package tests
 
 import (
 	"testing"
@@ -19,6 +19,23 @@ func TestStore(t *testing.T) {
 	Entity := domain.Entity{}
 	r, _ := usecase.Store(Entity)
 	assert.Equal(t, r.ID, 1)
+
+}
+
+func TestUpdate(t *testing.T) {
+
+	usecase := usecase.Usecase{
+		EntityRepository: repo.NewEntityRepository(),
+	}
+	entityTestData := domain.Entity{Text: "test text"}
+	entity, _ := usecase.Store(entityTestData)
+
+	//change Text
+	entity.Text = "updated text"
+	r, _ := usecase.Update(entity)
+
+	assert.Equal(t, r.ID, 1)
+	assert.Equal(t, r.Text, "updated text")
 
 }
 

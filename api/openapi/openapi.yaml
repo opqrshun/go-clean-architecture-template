@@ -7,7 +7,7 @@ servers:
 paths:
   /entities:
     get:
-      operationId: get-all
+      operationId: get-all-entity
       responses:
         "200":
           content:
@@ -22,7 +22,7 @@ paths:
       summary: Your GET endpoint
       tags: []
     post:
-      operationId: create
+      operationId: create-entity
       requestBody:
         content:
           application/json:
@@ -44,7 +44,7 @@ paths:
           description: Internal Server Error
   /entities/{id}:
     delete:
-      operationId: delete
+      operationId: delete-entity
       parameters:
       - explode: false
         in: path
@@ -57,7 +57,7 @@ paths:
         "204":
           description: No Content
     get:
-      operationId: get-by-id
+      operationId: get-by-id-entity
       parameters:
       - explode: false
         in: path
@@ -75,6 +75,28 @@ paths:
           description: OK
       summary: Your GET endpoint
       tags: []
+    patch:
+      operationId: update-entity
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Entity'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entity'
+          description: OK
 components:
   schemas:
     Entity:

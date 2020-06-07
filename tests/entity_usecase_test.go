@@ -10,7 +10,7 @@ import (
 	"go-clean-architecture/usecase"
 )
 
-func TestStore(t *testing.T) {
+func TestStoreEntity(t *testing.T) {
 
 	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),
@@ -22,7 +22,7 @@ func TestStore(t *testing.T) {
 
 }
 
-func TestUpdate(t *testing.T) {
+func TestUpdateEntity(t *testing.T) {
 
 	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),
@@ -39,7 +39,7 @@ func TestUpdate(t *testing.T) {
 
 }
 
-func TestGetAll(t *testing.T) {
+func TestGetAllEntity(t *testing.T) {
 
 	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),
@@ -50,11 +50,11 @@ func TestGetAll(t *testing.T) {
 	usecase.Store(Entity)
 	usecase.Store(Entity2)
 
-	entities, _ := usecase.GetAll()
-	assert.Equal(t, len(entities), 2)
+	r, _ := usecase.GetAll()
+	assert.Equal(t, len(r), 2)
 }
 
-func TestDelete(t *testing.T) {
+func TestDeleteEntity(t *testing.T) {
 
 	usecase := usecase.EntityUsecase{
 		EntityRepository: repo.NewEntityRepository(),

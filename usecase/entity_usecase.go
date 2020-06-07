@@ -6,31 +6,31 @@ type EntityUsecase struct {
 	EntityRepository EntityRepository
 }
 
-func (usecase *EntityUsecase) Store(e domain.Entity) (entity domain.Entity, err error) {
+func (usecase *EntityUsecase) Store(e domain.Entity) (r domain.Entity, err error) {
 	identifier, err := usecase.EntityRepository.Store(e)
 	if err != nil {
 		return
 	}
-	entity, err = usecase.EntityRepository.GetByID(identifier)
+	r, err = usecase.EntityRepository.GetByID(identifier)
 	return
 }
 
-func (usecase *EntityUsecase) Update(e domain.Entity) (entity domain.Entity, err error) {
+func (usecase *EntityUsecase) Update(e domain.Entity) (r domain.Entity, err error) {
 	identifier, err := usecase.EntityRepository.Update(e)
 	if err != nil {
 		return
 	}
-	entity, err = usecase.EntityRepository.GetByID(identifier)
+	r, err = usecase.EntityRepository.GetByID(identifier)
 	return
 }
 
-func (usecase *EntityUsecase) GetAll() (entities []domain.Entity, err error) {
-	entities, err = usecase.EntityRepository.GetAll()
+func (usecase *EntityUsecase) GetAll() (r []domain.Entity, err error) {
+	r, err = usecase.EntityRepository.GetAll()
 	return
 }
 
-func (usecase *EntityUsecase) GetByID(identifier int) (entity domain.Entity, err error) {
-	entity, err = usecase.EntityRepository.GetByID(identifier)
+func (usecase *EntityUsecase) GetByID(identifier int) (r domain.Entity, err error) {
+	r, err = usecase.EntityRepository.GetByID(identifier)
 	return
 }
 

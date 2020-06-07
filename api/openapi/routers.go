@@ -18,11 +18,11 @@ import (
 // Route is the information for every URI.
 type Route struct {
 	// Name is the name of this Route.
-	Name string
+	Name        string
 	// Method is the string for the HTTP method. ex) GET, POST etc..
-	Method string
+	Method      string
 	// Pattern is the pattern of the URI.
-	Pattern string
+	Pattern     string
 	// HandlerFunc is the handler function of this route.
 	HandlerFunc gin.HandlerFunc
 }
@@ -63,30 +63,37 @@ var routes = Routes{
 	},
 
 	{
-		"Create",
+		"CreateEntity",
 		http.MethodPost,
 		"/entities",
-		Create,
+		CreateEntity,
 	},
 
 	{
-		"Delete",
+		"DeleteEntity",
 		http.MethodDelete,
 		"/entities/:id",
-		Delete,
+		DeleteEntity,
 	},
 
 	{
-		"GetAll",
+		"GetAllEntity",
 		http.MethodGet,
 		"/entities",
-		GetAll,
+		GetAllEntity,
 	},
 
 	{
-		"GetByID",
+		"GetByIdEntity",
 		http.MethodGet,
 		"/entities/:id",
-		GetByID,
+		GetByIdEntity,
+	},
+
+	{
+		"UpdateEntity",
+		http.MethodPatch,
+		"/entities/:id",
+		UpdateEntity,
 	},
 }

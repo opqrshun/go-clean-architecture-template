@@ -13,7 +13,7 @@ import (
 	"go-clean-architecture/tests"
 )
 
-func TestPingRoute(t *testing.T) {
+func TestPingEntityRoute(t *testing.T) {
 	router := sw.NewRouter()
 
 	w := httptest.NewRecorder()
@@ -24,7 +24,7 @@ func TestPingRoute(t *testing.T) {
 	assert.Equal(t, "null", w.Body.String())
 }
 
-func TestCreateInvalidRoute(t *testing.T) {
+func TestCreateEntityInvalidRoute(t *testing.T) {
 	router := sw.NewRouter()
 
 	w := httptest.NewRecorder()
@@ -41,7 +41,7 @@ func TestCreateInvalidRoute(t *testing.T) {
 	assert.Equal(t, 400, w.Code)
 }
 
-func TestCreateRoute(t *testing.T) {
+func TestCreateEntityRoute(t *testing.T) {
 	router := sw.NewRouter()
 
 	w := httptest.NewRecorder()
@@ -52,7 +52,9 @@ func TestCreateRoute(t *testing.T) {
 	req.Header.Set("Content-Type", "application/json")
 	router.ServeHTTP(w, req)
 
+	//  for bind json
 	responseData := Entity{}
+
 	responseBytes := []byte(w.Body.String())
 	// a, _ := w.Body.ReadBytes(10)
 	json.Unmarshal(responseBytes, &responseData)

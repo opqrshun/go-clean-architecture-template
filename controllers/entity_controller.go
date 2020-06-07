@@ -27,60 +27,61 @@ func NewEntityController() *EntityController {
 
 //Create Entity
 func (controller *EntityController) Create(c Context) {
-	requestEntity := domain.Entity{}
-	err := c.Bind(&requestEntity)
+	request := domain.Entity{}
+	err := c.Bind(&request)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, NewError(err))
 		return
 	}
-	entity, err := controller.usecase.Store(requestEntity)
+	response, err := controller.usecase.Store(request)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))
 		return
 	}
-	c.JSON(http.StatusCreated, entity)
+	c.JSON(http.StatusCreated, response)
 }
 
-//Create Entity
+//Update Entity
 func (controller *EntityController) Update(c Context) {
 
-	validatedEntity := domain.EntityForUpdate{}
-	err := c.Bind(&validatedEntity)
+	validated := domain.EntityForUpdate{}
+	err := c.Bind(&validated)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, NewError(err))
 		return
 	}
-	requestEntity := domain.Entity{}
-	err = c.Bind(&requestEntity)
-	entity, err := controller.usecase.Update(requestEntity)
+
+	request := domain.Entity{}
+	err = c.Bind(&request)
+	response, err := controller.usecase.Update(request)
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))
 		return
 	}
-	c.JSON(http.StatusOK, entity)
+	c.JSON(http.StatusOK, response)
 }
 
 //GetAll Entity
 func (controller *EntityController) GetAll(c Context) {
-	entities, err := controller.usecase.GetAll()
+	response, err := controller.usecase.GetAll()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))
 		return
 	}
-	c.JSON(http.StatusOK, entities)
+	c.JSON(http.StatusOK, response)
 }
 
 //GetByID EntityID
 func (controller *EntityController) GetByID(c Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	Entity, err := controller.usecase.GetByID(id)
+	response, err := controller.usecase.GetByID(id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))
 		return
 	}
-	c.JSON(http.StatusOK, Entity)
+	c.JSON(http.StatusOK, response)
 }
 
 //Delete Entity

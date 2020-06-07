@@ -11,7 +11,7 @@ package openapi
 
 type Entity struct {
 
-	ID int32 `json:"id,omitempty"`
+	Id int32 `json:"id,omitempty"`
 
 	Text string `json:"text,omitempty"`
 

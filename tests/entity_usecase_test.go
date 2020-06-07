@@ -18,7 +18,7 @@ func TestStoreEntity(t *testing.T) {
 
 	Entity := domain.Entity{}
 	r, _ := usecase.Store(Entity)
-	assert.Equal(t, r.ID, 1)
+	assert.Equal(t, r.Id, 1)
 
 }
 
@@ -34,7 +34,7 @@ func TestUpdateEntity(t *testing.T) {
 	entity.Text = "updated text"
 	r, _ := usecase.Update(entity)
 
-	assert.Equal(t, r.ID, 1)
+	assert.Equal(t, r.Id, 1)
 	assert.Equal(t, r.Text, "updated text")
 
 }

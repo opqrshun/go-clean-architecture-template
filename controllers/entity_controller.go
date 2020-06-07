@@ -73,10 +73,10 @@ func (controller *EntityController) GetAll(c Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-//GetByID EntityID
-func (controller *EntityController) GetByID(c Context) {
+//GetById EntityId
+func (controller *EntityController) GetById(c Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	response, err := controller.usecase.GetByID(id)
+	response, err := controller.usecase.GetById(id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))
 		return

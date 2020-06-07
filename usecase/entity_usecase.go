@@ -11,7 +11,7 @@ func (usecase *EntityUsecase) Store(e domain.Entity) (r domain.Entity, err error
 	if err != nil {
 		return
 	}
-	r, err = usecase.EntityRepository.GetByID(identifier)
+	r, err = usecase.EntityRepository.GetById(identifier)
 	return
 }
 
@@ -20,7 +20,7 @@ func (usecase *EntityUsecase) Update(e domain.Entity) (r domain.Entity, err erro
 	if err != nil {
 		return
 	}
-	r, err = usecase.EntityRepository.GetByID(identifier)
+	r, err = usecase.EntityRepository.GetById(identifier)
 	return
 }
 
@@ -29,8 +29,8 @@ func (usecase *EntityUsecase) GetAll() (r []domain.Entity, err error) {
 	return
 }
 
-func (usecase *EntityUsecase) GetByID(identifier int) (r domain.Entity, err error) {
-	r, err = usecase.EntityRepository.GetByID(identifier)
+func (usecase *EntityUsecase) GetById(identifier int) (r domain.Entity, err error) {
+	r, err = usecase.EntityRepository.GetById(identifier)
 	return
 }
 

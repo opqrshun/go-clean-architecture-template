@@ -34,7 +34,7 @@ func GetAllEntity(c *gin.Context) {
 
 // GetByIdEntity - Your GET endpoint
 func GetByIdEntity(c *gin.Context) {
-	EntityController.GetByID(c)
+	EntityController.GetById(c)
 }
 
 // UpdateEntity -

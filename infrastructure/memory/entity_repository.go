@@ -23,7 +23,7 @@ func (repo *EntityRepository) Store(entity domain.Entity) (id int, err error) {
 	// todo refactoring
 	id = repo.Index + 1
 	repo.Index = id
-	entity.ID = id
+	entity.Id = id
 	entity.CreatedAt = time.Now()
 	entity.UpdatedAt = time.Now()
 	repo.entities[id] = entity
@@ -33,13 +33,13 @@ func (repo *EntityRepository) Store(entity domain.Entity) (id int, err error) {
 
 func (repo *EntityRepository) Update(entity domain.Entity) (id int, err error) {
 	entity.UpdatedAt = time.Now()
-	repo.entities[entity.ID] = entity
+	repo.entities[entity.Id] = entity
 
-	id = entity.ID
+	id = entity.Id
 	return
 }
 
-func (repo *EntityRepository) GetByID(identifier int) (entity domain.Entity, err error) {
+func (repo *EntityRepository) GetById(identifier int) (entity domain.Entity, err error) {
 
 	entity, ok := repo.entities[identifier]
 

@@ -50,6 +50,16 @@ func (repo *EntityRepository) GetById(identifier int) (r domain.Entity, err erro
 	return
 }
 
+//Search
+func (repo *EntityRepository) Search(query string) (r []domain.Entity, err error) {
+	for _, j := range repo.data {
+		if strings.Contains(strings.ToLower(j.Text), query) {
+			r = append(r, j)
+		}
+	}
+	return
+}
+
 func (repo *EntityRepository) GetAll() (r []domain.Entity, err error) {
 	//sort map key
 	var keys []int
@@ -59,16 +69,6 @@ func (repo *EntityRepository) GetAll() (r []domain.Entity, err error) {
 	sort.Ints(keys)
 	for _, k := range keys {
 		r = append(r, repo.data[k])
-	}
-	return
-}
-
-//Search
-func (repo *EntityRepository) Search(query string) (r []domain.Entity, err error) {
-	for _, j := range repo.data {
-		if strings.Contains(strings.ToLower(j.Text), query) {
-			r = append(r, j)
-		}
 	}
 	return
 }

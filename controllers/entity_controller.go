@@ -63,9 +63,10 @@ func (controller *EntityController) Update(c Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-//GetAll Entity
-func (controller *EntityController) GetAll(c Context) {
-	response, err := controller.usecase.GetAll()
+//GetById EntityId
+func (controller *EntityController) GetById(c Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	response, err := controller.usecase.GetById(id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))
 		return
@@ -73,10 +74,20 @@ func (controller *EntityController) GetAll(c Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-//GetById EntityId
-func (controller *EntityController) GetById(c Context) {
-	id, _ := strconv.Atoi(c.Param("id"))
-	response, err := controller.usecase.GetById(id)
+//Search
+func (controller *EntityController) Search(c Context) {
+	query := c.Param("query")
+	response, err := controller.usecase.Search(query)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, NewError(err))
+		return
+	}
+	c.JSON(http.StatusOK, response)
+}
+
+//GetAll Entity
+func (controller *EntityController) GetAll(c Context) {
+	response, err := controller.usecase.GetAll()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, NewError(err))
 		return

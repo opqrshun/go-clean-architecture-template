@@ -24,13 +24,18 @@ func (usecase *EntityUsecase) Update(e domain.Entity) (r domain.Entity, err erro
 	return
 }
 
-func (usecase *EntityUsecase) GetAll() (r []domain.Entity, err error) {
-	r, err = usecase.EntityRepository.GetAll()
+func (usecase *EntityUsecase) GetById(identifier int) (r domain.Entity, err error) {
+	r, err = usecase.EntityRepository.GetById(identifier)
 	return
 }
 
-func (usecase *EntityUsecase) GetById(identifier int) (r domain.Entity, err error) {
-	r, err = usecase.EntityRepository.GetById(identifier)
+func (usecase *EntityUsecase) Search(query string) (r []domain.Entity, err error) {
+	r, err = usecase.EntityRepository.Search(query)
+	return
+}
+
+func (usecase *EntityUsecase) GetAll() (r []domain.Entity, err error) {
+	r, err = usecase.EntityRepository.GetAll()
 	return
 }
 

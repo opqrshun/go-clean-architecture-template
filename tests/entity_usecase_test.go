@@ -54,6 +54,21 @@ func TestGetAllEntity(t *testing.T) {
 	assert.Equal(t, len(r), 2)
 }
 
+func TestSearchEntity(t *testing.T) {
+
+	usecase := usecase.EntityUsecase{
+		EntityRepository: repo.NewEntityRepository(),
+	}
+
+	entity := domain.Entity{Text: "test text"}
+	entity2 := domain.Entity{Text: "text"}
+	usecase.Store(entity)
+	usecase.Store(entity2)
+
+	r, _ := usecase.Search("test")
+	assert.Equal(t, len(r), 1)
+}
+
 func TestDeleteEntity(t *testing.T) {
 
 	usecase := usecase.EntityUsecase{

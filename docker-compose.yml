@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  go:
+    build:
+      context: ./
+      dockerfile: ./docker/go/Dockerfile
+    restart: always
+    ports:
+      - ${GO_PORT}:8080
+    depends_on:
+      - mariadb
+
+    # volumes:
+    #   - ../:/go/src/
+  mariadb:
+    build: ./docker/mariadb
+    restart: always
+    ports:
+      - ${MYSQL_PORT}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ../docker_data/go-backend/db/data:/var/lib/mysql
+      
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - ${PHPMYADMIN_PORT}:80
+    depends_on:
+      - mariadb
+    volumes:
+     - ../docker_data/go-backend/phpmyadmin/sessions:/sessions
+# volumes:
+#   wordpress:
+#   mariadb:

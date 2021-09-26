@@ -1,0 +1,42 @@
+{
+  "family": "gobackend",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "gobackend",
+      "image": "gobackend",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment" : [
+      ],
+      "secrets": [
+        { "name" : "MYSQL_USER", "valueFrom" : "/gobackend/dev/gobackend_mysql_user" },
+        { "name" : "MYSQL_PASSWORD", "valueFrom" : "/gobackend/dev/gobackend_mysql_password" },
+        { "name" : "MYSQL_PROTOCOL", "valueFrom" : "/gobackend/dev/gobackend_mysql_protocol" },
+        { "name" : "MYSQL_DATABASE", "valueFrom" : "/gobackend/dev/gobackend_mysql_database" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "awslogs-gobackend",
+            "awslogs-region": "ap-northeast-1",
+            "awslogs-stream-prefix": "api1"
+        }
+      }
+
+    }
+  ],
+
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "executionRoleArn": "ecsTaskExecutionRole",
+  "cpu": "256",
+  "memory": "512"
+}

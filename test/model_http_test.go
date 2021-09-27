@@ -1,4 +1,4 @@
-package tests
+package test
 
 import (
 	// "bytes"
@@ -13,11 +13,11 @@ import (
 	// "github.com/brianvoe/gofakeit"
 	"github.com/stretchr/testify/assert"
 
-	"gobackend/tests"
+	"gobackend/test"
 )
 
 func TestPingModelRoute(t *testing.T) {
-	parent := tests.SetParentTestData()
+	parent := test.SetParentTestData()
 
 	router := sw.NewRouter()
 	w := httptest.NewRecorder()
@@ -28,7 +28,7 @@ func TestPingModelRoute(t *testing.T) {
 }
 
 func TestCreateModelInvalidRoute(t *testing.T) {
-	parent := tests.SetParentTestData()
+	parent := test.SetParentTestData()
 	router := sw.NewRouter()
 
 	w := httptest.NewRecorder()
@@ -51,7 +51,7 @@ func TestDeleteModelRoute(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	//model
-	response := tests.Parent{}
+	response := test.Parent{}
 
 	fmt.Println(w.Body.String())
 	b := []byte(w.Body.String())
@@ -73,7 +73,7 @@ func TestFindByIDModelRoute(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/v1/models/"+strconv.Itoa(model.ID), nil)
 
 	router.ServeHTTP(w, req)
-	response := tests.Model{}
+	response := test.Model{}
 
 	fmt.Println(w.Body.String())
 	b := []byte(w.Body.String())

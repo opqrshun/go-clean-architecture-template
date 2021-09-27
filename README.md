@@ -5,7 +5,8 @@
 docker-compose -p gobackend up -d
 ```
 
-### マイグレーション
+### migration
+
 ```
 mysql -h 127.0.0.1 -P 3338 -u gobackend -pgobackend -D gobackend < schema/base.sql
 ```
@@ -14,7 +15,7 @@ phpmyadmin
 http://localhost:9008/
 
 ### 環境変数
-.envファイルで指定できます。
+setting .env
 
 ```
 #!/usr/bin/env bash
@@ -35,14 +36,24 @@ MYSQL_PROTOCOL="tcp(mariadb:3306)"
 
 ### API動作確認
 
+
 ### build
 ```
-go build .
+go build ./cmd
 ```
 
 ### test
+
+if local
+
 ```
-docker exec gobackend_go_1 go test tests/* -count=1
+export MYSQL_PROTOCOL="tcp(127.0.0.1:3338)"
+```
+
+
+run test
+```
+go test -v ./...
 ```
 
 

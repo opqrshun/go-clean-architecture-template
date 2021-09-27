@@ -1,4 +1,4 @@
-package tests
+package test
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 
 	// "gobackend/pkg/identifier"
 	sw "gobackend/internal/api/http"
-	"gobackend/tests"
+	"gobackend/test"
 )
 
 func TestPingParentRoute(t *testing.T) {
@@ -38,8 +38,8 @@ func TestCreateParentInvalidRoute(t *testing.T) {
 	assert.Equal(t, 400, w.Code)
 }
 
-func BuildCreateParent() tests.ParentCreate {
-	parentCreate := tests.ParentCreate{}
+func BuildCreateParent() test.ParentCreate {
+	parentCreate := test.ParentCreate{}
 	gofakeit.Struct(&parentCreate)
 	return parentCreate
 }
@@ -62,7 +62,7 @@ func TestCreateParentRoute(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	//  for bind json
-	res := tests.Parent{}
+	res := test.Parent{}
 
 	fmt.Println(w.Body)
 	b := []byte(w.Body.String())
@@ -81,7 +81,7 @@ func TestUpdateParentRoute(t *testing.T) {
 	router := sw.NewRouter()
 	w := httptest.NewRecorder()
 
-	parentUpdate := tests.ParentUpdate{}
+	parentUpdate := test.ParentUpdate{}
 	gofakeit.Struct(&parentUpdate)
 	parentUpdate.ID = parent.ID
 
@@ -95,7 +95,7 @@ func TestUpdateParentRoute(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	//res
-	res := tests.Parent{}
+	res := test.Parent{}
 
 	fmt.Println(w.Body)
 	b := []byte(w.Body.String())
@@ -119,7 +119,7 @@ func TestFindByIDParentRoute(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/v1/parents/"+strconv.Itoa(parent.ID), nil)
 
 	router.ServeHTTP(w, req)
-	res := tests.Parent{}
+	res := test.Parent{}
 
 	fmt.Println(w.Body)
 	b := []byte(w.Body.String())

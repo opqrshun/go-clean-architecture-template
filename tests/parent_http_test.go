@@ -14,7 +14,7 @@ import (
 	// "github.com/stretchr/testify/suite"
 
 	// "gobackend/core/identifier"
-	sw "gobackend/api/openapi"
+	sw "gobackend/api/http"
 	"gobackend/tests"
 )
 

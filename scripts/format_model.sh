@@ -11,7 +11,7 @@ sed -i "s/UpdatedTime string/UpdatedAt time.Time/g" $(fd -e go --full-path ./ )
 sed -i "s/CreatedTime string/CreatedAt time.Time/g" $(fd -e go --full-path ./ ) 
 sed -i "s/DeletedTime string/DeletedAt time.Time/g" $(fd -e go --full-path ./ ) 
 
-sed -i "s/package openapi/package domain/g" $(fd -e go --full-path ./ ) 
+sed -i "s/package http/package domain/g" $(fd -e go --full-path ./ ) 
 sed -i 's/int32/int/g' $(fd -e go)
 sed -i 's/int64/int/g' $(fd -e go)
 

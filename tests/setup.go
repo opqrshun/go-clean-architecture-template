@@ -2,7 +2,7 @@ package tests
 
 import (
 	"gobackend/model"
-	repo "gobackend/infrastructure/database"
+	repo "gobackend/repository/database"
 
 	"github.com/brianvoe/gofakeit"
 )

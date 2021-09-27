@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	repo "gobackend/infrastructure/database"
+	repo "gobackend/repository/database"
 	"gobackend/model"
 	"gobackend/usecase"
 )

@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"encoding/json"
 	"fmt"
-	sw "gobackend/api/openapi"
+	sw "gobackend/api/http"
 	"net/http"
 	"net/http/httptest"
 	"testing"

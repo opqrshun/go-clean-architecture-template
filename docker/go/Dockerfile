@@ -42,6 +42,6 @@ ENTRYPOINT ["./gobackend"]
 
 # FROM scratch AS runtime
 # ENV GIN_MODE=release
-# COPY --from=build /go/src/openapi ./
+# COPY --from=build /go/src/http ./
 # EXPOSE 8080/tcp
 # ENTRYPOINT ["./gobackend"]

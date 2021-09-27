@@ -6,7 +6,7 @@ package mock
 
 import (
 	domain "gobackend/model"
-	database "gobackend/infrastructure/database"
+	database "gobackend/repository/database"
 	request "gobackend/model"
 	response "gobackend/model"
 	reflect "reflect"

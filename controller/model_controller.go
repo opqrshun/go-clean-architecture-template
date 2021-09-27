@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"github.com/gin-gonic/gin"
 
-	repo "gobackend/infrastructure/database"
+	repo "gobackend/repository/database"
 	"gobackend/model"
 	"gobackend/usecase"
 )

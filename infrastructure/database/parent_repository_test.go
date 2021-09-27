@@ -6,14 +6,13 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/stretchr/testify/assert"
 
-	"gobackend/domain"
 	repo "gobackend/infrastructure/database"
-	"gobackend/request"
+	"gobackend/model"
 )
 
 func TestStore(t *testing.T) {
 	repo := repo.NewParent()
-	_parent := domain.Parent{
+	_parent := model.Parent{
 		Body:  gofakeit.Sentence(1),
 	}
 
@@ -26,7 +25,7 @@ func TestStore(t *testing.T) {
 
 func TestUpdateParentRepo(t *testing.T) {
 	repository := repo.NewParent()
-	parent := domain.Parent{
+	parent := model.Parent{
 		Body:  gofakeit.Sentence(1),
 	}
 
@@ -47,18 +46,18 @@ func TestUpdateParentRepo(t *testing.T) {
 
 func TestSearchParents(t *testing.T) {
 	r := repo.NewParent()
-	parent := domain.Parent{
+	parent := model.Parent{
 		Body:   "search target body",
 	}
 
 	r.Store(&parent)
 
-	parent = domain.Parent{
+	parent = model.Parent{
 		Body:   "search no target body",
 	}
 
 	r.Store(&parent)
-	q := request.ParentQuery{
+	q := model.ParentQuery{
 		Query: "search target",
 	}
 

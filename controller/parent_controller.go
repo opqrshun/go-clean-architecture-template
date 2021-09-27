@@ -1,11 +1,11 @@
-package controllers
+package controller
 
 import (
 	"net/http"
 	"strconv"
 
 	repo "gobackend/infrastructure/database"
-	"gobackend/request"
+	"gobackend/model"
 	"gobackend/usecase"
 )
 
@@ -28,7 +28,7 @@ func NewParent(logger Logger) *Parent {
 //Create Parent
 func (controller *Parent) Create(c Context) {
   //validate
-	request := request.Parent{}
+	request := model.ParentDTO{}
 	if err := c.Bind(&request); err != nil {
     controller.ResponseInvalidRequest(c, err)
     return
@@ -47,7 +47,7 @@ func (controller *Parent) Create(c Context) {
 //Update Parent
 func (controller *Parent) Update(c Context) {
   //validate
-	request := request.Parent{}
+	request := model.ParentDTO{}
 	if err := c.Bind(&request); err != nil {
     controller.ResponseInvalidRequest(c, err)
 		return
@@ -74,7 +74,7 @@ func (controller *Parent) Update(c Context) {
 func (controller *Parent) FindAll(c Context) {
 
   //validate
-	q := request.ParentQuery{}
+	q := model.ParentQuery{}
 	if err := c.ShouldBindQuery(&q); err != nil {
     controller.ResponseInvalidRequest(c, err)
     return

@@ -12,11 +12,11 @@ package openapi
 
 import (
 	"github.com/gin-gonic/gin"
-	"gobackend/controllers"
+	"gobackend/controller"
 	"gobackend/core/logger"
 )
 
-var Parent = controllers.NewParent(logger.GetLogger())
+var Parent = controller.NewParent(logger.GetLogger())
 
 
 // CreateParent -

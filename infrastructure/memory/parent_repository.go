@@ -1,25 +1,25 @@
 package memory
 
 import (
-	"gobackend/domain"
+	"gobackend/model"
 	"sort"
 	"time"
-	// "gobackend/domain"
+	// "gobackend/model"
 )
 
 type Parent struct {
 	Index    int
-	entities map[int]domain.Parent
+	entities map[int]model.Parent
 }
 
 func NewParent() *Parent {
 	return &Parent{
 		Index:    0,
-		entities: make(map[int]domain.Parent),
+		entities: make(map[int]model.Parent),
 	}
 }
 
-func (repo *Parent) Store(parent domain.Parent) (id int, err error) {
+func (repo *Parent) Store(parent model.Parent) (id int, err error) {
 	// todo refactoring
 	id = repo.Index + 1
 	repo.Index = id
@@ -31,7 +31,7 @@ func (repo *Parent) Store(parent domain.Parent) (id int, err error) {
 	return
 }
 
-func (repo *Parent) Update(parent domain.Parent) (id int, err error) {
+func (repo *Parent) Update(parent model.Parent) (id int, err error) {
 	parent.UpdatedAt = time.Now()
 	repo.entities[parent.ID] = parent
 
@@ -39,7 +39,7 @@ func (repo *Parent) Update(parent domain.Parent) (id int, err error) {
 	return
 }
 
-func (repo *Parent) FindByID(id int) (parent domain.Parent, err error) {
+func (repo *Parent) FindByID(id int) (parent model.Parent, err error) {
 
 	parent, ok := repo.entities[id]
 
@@ -49,7 +49,7 @@ func (repo *Parent) FindByID(id int) (parent domain.Parent, err error) {
 	return
 }
 
-func (repo *Parent) FindAll() (entities []domain.Parent, err error) {
+func (repo *Parent) FindAll() (entities []model.Parent, err error) {
 	//sort map key
 	var keys []int
 	for k := range repo.entities {

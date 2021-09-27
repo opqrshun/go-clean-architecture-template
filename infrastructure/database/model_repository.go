@@ -1,9 +1,7 @@
 package database
 
 import (
-	"gobackend/domain"
-	"gobackend/request"
-	"gobackend/response"
+	"gobackend/model"
 )
 
 type Model struct {
@@ -14,35 +12,35 @@ func NewModel() *Model {
 	return &Model{Repository: New()}
 }
 
-func (repo *Model) FindByID(id int) (domain.Model, error) {
-  var model domain.Model
+func (repo *Model) FindByID(id int) (model.Model, error) {
+  var model model.Model
   err := repo.FindBaseByID(&model, id)
 	return model, err
 }
 
-func (repo *Model) FindAll() ([]domain.Model, error) {
-  var models []domain.Model
+func (repo *Model) FindAll() ([]model.Model, error) {
+  var models []model.Model
   err := repo.Find(&models)
 	return models, err
 }
 
-func (repo *Model) FindFullByID(id int) (response.Model, error) {
-  var model response.Model
+func (repo *Model) FindFullByID(id int) (model.Model, error) {
+  var model model.Model
 	model.ID = id
   err := repo.FindWithPreload(&model)
 	return model, err
 }
 
 //FindAll
-func (repo *Model) FindAllFull() ([]response.Model, error) {
-  var models []response.Model
+func (repo *Model) FindAllFull() ([]model.Model, error) {
+  var models []model.Model
   err := repo.FindAllWithPreload(models)
 	return models, err
 }
 
 //search parents by Authenticated user or other user
-func (repo *Model) FindAllFullByParent(q *request.ModelQuery, parentID int) ([]response.Model, error) {
-  var models []response.Model
+func (repo *Model) FindAllFullByParent(q *model.ModelQuery, parentID int) ([]model.Model, error) {
+  var models []model.Model
 
 	condition, params := repo.BuildConditionParams(q)
 	condition = condition + "AND models.parent_id = ? "
@@ -54,7 +52,7 @@ func (repo *Model) FindAllFullByParent(q *request.ModelQuery, parentID int) ([]r
 	return models, err
 }
 
-func (repo *Model) BuildConditionParams(q *request.ModelQuery) (condition string, params []interface{}) {
+func (repo *Model) BuildConditionParams(q *model.ModelQuery) (condition string, params []interface{}) {
 	// build condition deleted_at=0
 	condition = "models.deleted_at is NULL "
 	if q.Query != "" {

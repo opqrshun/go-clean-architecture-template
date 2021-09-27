@@ -11,7 +11,6 @@ require (
 	github.com/golang/mock v1.6.0
 	github.com/joho/godotenv v1.3.0
 	github.com/kr/pretty v0.2.0 // indirect
-	github.com/oklog/ulid/v2 v2.0.2
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/multierr v1.6.0 // indirect

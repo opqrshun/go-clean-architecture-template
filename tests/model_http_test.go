@@ -50,7 +50,7 @@ func TestDeleteModelRoute(t *testing.T) {
 	req.Header.Set("authorization", "")
 	router.ServeHTTP(w, req)
 
-	//response
+	//model
 	response := tests.Parent{}
 
 	fmt.Println(w.Body.String())

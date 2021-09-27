@@ -1,19 +1,18 @@
 package tests
 
 import (
-	"gobackend/domain"
-	"gobackend/response"
+	"gobackend/model"
 	repo "gobackend/infrastructure/database"
 
 	"github.com/brianvoe/gofakeit"
 )
 
 //SetParentTestDataWithUsername
-func SetParentTestData() (r response.Parent) {
+func SetParentTestData() (r model.Parent) {
 	//set parent
 	repository := repo.NewParent()
 
-	parent := domain.Parent{
+	parent := model.Parent{
 		Body:  gofakeit.Sentence(1),
 	}
 	id, _ := repository.Store(&parent)
@@ -21,11 +20,11 @@ func SetParentTestData() (r response.Parent) {
 	return
 }
 
-func SetModelTestData() (rModel domain.Model) {
+func SetModelTestData() (rModel model.Model) {
 	//set parent
 	repository := repo.NewParent()
 
-	parent := domain.Parent{
+	parent := model.Parent{
 		Body:  gofakeit.Sentence(1),
 	}
 	id, _ := repository.Store(&parent)
@@ -34,7 +33,7 @@ func SetModelTestData() (rModel domain.Model) {
 	//set model
 	repositoryModel := repo.NewModel()
 
-	model := domain.Model{
+	model := model.Model{
 		Body:      gofakeit.Sentence(10),
 		ParentID: r.ID,
 	}

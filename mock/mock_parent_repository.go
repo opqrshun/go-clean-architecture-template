@@ -5,10 +5,10 @@
 package mock
 
 import (
-	domain "gobackend/domain"
+	domain "gobackend/model"
 	database "gobackend/infrastructure/database"
-	request "gobackend/request"
-	response "gobackend/response"
+	request "gobackend/model"
+	response "gobackend/model"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
@@ -52,10 +52,10 @@ func (mr *MockParentRepositoryMockRecorder) Delete(arg0 interface{}) *gomock.Cal
 }
 
 // FindAll mocks base method.
-func (m *MockParentRepository) FindAll() ([]domain.Parent, error) {
+func (m *MockParentRepository) FindAll() ([]model.Parent, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindAll")
-	ret0, _ := ret[0].([]domain.Parent)
+	ret0, _ := ret[0].([]model.Parent)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -67,10 +67,10 @@ func (mr *MockParentRepositoryMockRecorder) FindAll() *gomock.Call {
 }
 
 // FindAllFull mocks base method.
-func (m *MockParentRepository) FindAllFull(arg0 *request.ParentQuery) ([]response.Parent, error) {
+func (m *MockParentRepository) FindAllFull(arg0 *model.ParentQuery) ([]model.Parent, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindAllFull", arg0)
-	ret0, _ := ret[0].([]response.Parent)
+	ret0, _ := ret[0].([]model.Parent)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -82,10 +82,10 @@ func (mr *MockParentRepositoryMockRecorder) FindAllFull(arg0 interface{}) *gomoc
 }
 
 // FindByID mocks base method.
-func (m *MockParentRepository) FindByID(arg0 int) (domain.Parent, error) {
+func (m *MockParentRepository) FindByID(arg0 int) (model.Parent, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindByID", arg0)
-	ret0, _ := ret[0].(domain.Parent)
+	ret0, _ := ret[0].(model.Parent)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -97,10 +97,10 @@ func (mr *MockParentRepositoryMockRecorder) FindByID(arg0 interface{}) *gomock.C
 }
 
 // FindFullByID mocks base method.
-func (m *MockParentRepository) FindFullByID(arg0 int) (response.Parent, error) {
+func (m *MockParentRepository) FindFullByID(arg0 int) (model.Parent, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindFullByID", arg0)
-	ret0, _ := ret[0].(response.Parent)
+	ret0, _ := ret[0].(model.Parent)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }

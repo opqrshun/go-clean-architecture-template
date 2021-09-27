@@ -1,25 +1,25 @@
 package memory
 
 import (
-	"gobackend/domain"
+	"gobackend/model"
 	"sort"
 	"time"
-	// "gobackend/domain"
+	// "gobackend/model"
 )
 
 type Model struct {
 	Index    int
-	entities map[int]domain.Model
+	entities map[int]model.Model
 }
 
 func NewModel() *Model {
 	return &Model{
 		Index:    0,
-		entities: make(map[int]domain.Model),
+		entities: make(map[int]model.Model),
 	}
 }
 
-func (repo *Model) Store(model domain.Model) (id int, err error) {
+func (repo *Model) Store(model model.Model) (id int, err error) {
 	// todo refactoring
 	id = repo.Index + 1
 	repo.Index = id
@@ -31,7 +31,7 @@ func (repo *Model) Store(model domain.Model) (id int, err error) {
 	return
 }
 
-func (repo *Model) Update(model domain.Model) (id int, err error) {
+func (repo *Model) Update(model model.Model) (id int, err error) {
 	model.UpdatedAt = time.Now()
 	repo.entities[model.ID] = model
 
@@ -39,7 +39,7 @@ func (repo *Model) Update(model domain.Model) (id int, err error) {
 	return
 }
 
-func (repo *Model) FindByID(id int) (model domain.Model, err error) {
+func (repo *Model) FindByID(id int) (model model.Model, err error) {
 
 	model, ok := repo.entities[id]
 
@@ -49,7 +49,7 @@ func (repo *Model) FindByID(id int) (model domain.Model, err error) {
 	return
 }
 
-func (repo *Model) FindAll() (entities []domain.Model, err error) {
+func (repo *Model) FindAll() (entities []model.Model, err error) {
 	//sort map key
 	var keys []int
 	for k := range repo.entities {

@@ -2,12 +2,12 @@ package openapi
 
 import (
 	"github.com/gin-gonic/gin"
-	"gobackend/controllers"
+	"gobackend/controller"
 	"gobackend/core/errors"
 	"gobackend/core/logger"
 )
 
-var Controller = controllers.New(logger.GetLogger())
+var Controller = controller.New(logger.GetLogger())
 
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {

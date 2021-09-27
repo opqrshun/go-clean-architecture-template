@@ -1,4 +1,4 @@
-package domain
+package model
 
 import (
 	"time"
@@ -9,6 +9,7 @@ type Base struct {
 	CreatedAt time.Time     `json:"created_time,omitempty"`
 	UpdatedAt time.Time     `json:"updated_time,omitempty"`
 }
+
 
 func (base *Base) GetID() int {
 	return base.ID

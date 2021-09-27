@@ -11,12 +11,12 @@
 package openapi
 
 import (
-	"gobackend/controllers"
+	"gobackend/controller"
 	"github.com/gin-gonic/gin"
 	"gobackend/core/logger"
 )
 
-var Model = controllers.NewModel(logger.GetLogger())
+var Model = controller.NewModel(logger.GetLogger())
 
 // CreateModel -
 func CreateModel(c *gin.Context) {

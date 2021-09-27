@@ -1,4 +1,4 @@
-package controllers
+package controller
 
 import (
 	"net/http"
@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	repo "gobackend/infrastructure/database"
-	"gobackend/request"
+	"gobackend/model"
 	"gobackend/usecase"
 )
 
@@ -34,7 +34,7 @@ func (controller *Model) Create(c Context) {
 		return
 	}
 
-	request := request.Model{}
+	request := model.ModelDTO{}
 	if err := c.Bind(&request); err != nil {
 		controller.ResponseInvalidRequest(c, err)
 		return
@@ -51,7 +51,7 @@ func (controller *Model) Create(c Context) {
 
 //Update Model
 func (controller *Model) Update(c Context) {
-	request := request.Model{}
+	request := model.ModelDTO{}
 	if err := c.Bind(&request); err != nil {
 		controller.ResponseWithError(c, err)
 		return
@@ -91,7 +91,7 @@ func (controller *Model) FindAllByParent(c Context) {
 		return
   }
 
-	q := request.ModelQuery{}
+	q := model.ModelQuery{}
 	if err := c.ShouldBindQuery(&q); err != nil {
 		controller.ResponseInvalidRequest(c, err)
 	}

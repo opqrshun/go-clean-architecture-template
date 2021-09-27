@@ -1,11 +1,24 @@
-package request
-
+package model
 import (
+	"gorm.io/gorm"
+
 )
 
 // Parent - A single parent.
 type Parent struct {
-	//TODO Bodyを必須にする。Bodyを検索対象にする。
+	Base
+	Body            string  `json:"body,omitempty"`
+
+	DeletedAt gorm.DeletedAt
+	Models []Model `json:"models,omitempty"`
+}
+
+func (parent *Parent) SetRequest(dto ParentDTO) {
+	parent.Body = dto.Body
+}
+
+// Parent - A single parent.
+type ParentDTO struct {
 	ID    int
 	Body  string `json:"body,omitempty"`
 

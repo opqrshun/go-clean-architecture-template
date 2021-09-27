@@ -1,19 +1,17 @@
 package usecase
 
 import (
-	"gobackend/domain"
 	repo "gobackend/infrastructure/database"
-	"gobackend/request"
-	"gobackend/response"
+	"gobackend/model"
 )
 
 type ModelRepository interface {
 	Store(repo.Base) (int, error)
 	Update(repo.Base) (int, error)
-	FindByID(int) (domain.Model, error)
-	FindAll() ([]domain.Model, error)
-	FindAllFullByParent(*request.ModelQuery, int) ([]response.Model, error)
+	FindByID(int) (model.Model, error)
+	FindAll() ([]model.Model, error)
+	FindAllFullByParent(*model.ModelQuery, int) ([]model.Model, error)
 	Delete(repo.Base) error
-	FindFullByID(int) (response.Model, error)
-	FindAllFull() ([]response.Model, error)
+	FindFullByID(int) (model.Model, error)
+	FindAllFull() ([]model.Model, error)
 }

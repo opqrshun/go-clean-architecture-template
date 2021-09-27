@@ -2,9 +2,7 @@ package database
 
 import (
 	// "fmt"
-	"gobackend/domain"
-	"gobackend/request"
-	"gobackend/response"
+	"gobackend/model"
 )
 
 type Parent struct {
@@ -16,23 +14,23 @@ func NewParent() *Parent {
 }
 
 //FindByID
-func (repo *Parent) FindByID(id int) (domain.Parent, error) {
-  var c domain.Parent
+func (repo *Parent) FindByID(id int) (model.Parent, error) {
+  var c model.Parent
   err := repo.FindBaseByID(&c, id)
 	return c, err
 }
 
 //get parent
-func (repo *Parent) FindFullByID(id int) (response.Parent, error) {
-  var parent response.Parent
+func (repo *Parent) FindFullByID(id int) (model.Parent, error) {
+  var parent model.Parent
 	parent.ID = id
   err := repo.FindWithPreload(&parent)
 	return parent, err
 }
 
 //search parents
-func (repo *Parent) FindAllFull(q *request.ParentQuery) ([]response.Parent, error) {
-  var parents []response.Parent
+func (repo *Parent) FindAllFull(q *model.ParentQuery) ([]model.Parent, error) {
+  var parents []model.Parent
 	condition, params := repo.BuildConditionParams(q)
 	offset, limit := repo.GetOffsetLimit(q.Page, q.PageSize)
 
@@ -42,7 +40,7 @@ func (repo *Parent) FindAllFull(q *request.ParentQuery) ([]response.Parent, erro
 
 
 //BuildConditionParams
-func (repo *Parent) BuildConditionParams(q *request.ParentQuery) (condition string, params []interface{}) {
+func (repo *Parent) BuildConditionParams(q *model.ParentQuery) (condition string, params []interface{}) {
 	//TODO seaach body like
 	// build condition deleted_at=0
 	condition = "parents.deleted_at is NULL "
@@ -58,8 +56,8 @@ func (repo *Parent) BuildConditionParams(q *request.ParentQuery) (condition stri
 
 
 //FindAll
-func (repo *Parent) FindAll() ([]domain.Parent, error) {
-  var parents []domain.Parent
+func (repo *Parent) FindAll() ([]model.Parent, error) {
+  var parents []model.Parent
   err := repo.Find(&parents)
 	return parents, err
 }

@@ -1,0 +1,10 @@
+go.mod
+go.sum
+docker-compose.yml
+README.md
+runner.conf
+.github
+ord
+generator.sh
+task-definition.json
+docker

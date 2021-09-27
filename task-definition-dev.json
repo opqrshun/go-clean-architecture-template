@@ -1,0 +1,66 @@
+{
+  "family": "gobackend-dev",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+		{
+			"essential": true,
+			"image": "public.ecr.aws/aws-observability/aws-for-fluent-bit:2.14.0",
+			"name": "log_router",
+			"firelensConfiguration": {
+				"type": "fluentbit"
+			},
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-group": "/fargate/service/gobackend-dev",
+					"awslogs-region": "us-east-1",
+					"awslogs-stream-prefix": "firelens"
+				}
+			},
+			"memoryReservation": 128
+		},
+    {
+      "name": "gobackend-dev-app",
+      "image": "gobackend-dev",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment" : [
+      ],
+      "secrets": [
+        { "name" : "MYSQL_USER", "valueFrom" : "/gobackend/dev/mysql_user" },
+        { "name" : "MYSQL_DATABASE", "valueFrom" : "/gobackend/dev/mysql_database" },
+        { "name" : "MYSQL_PASSWORD", "valueFrom" : "/gobackend/dev/mysql_password" },
+        { "name" : "MYSQL_PROTOCOL", "valueFrom" : "/gobackend/dev/mysql_protocol" },
+        { "name" : "SENTRY_DSN", "valueFrom" : "/gobackend/dev/sentry_dsn" },
+        { "name" : "ENV", "valueFrom" : "/gobackend/dev/env" },
+        { "name" : "REGION", "valueFrom" : "/gobackend/dev/region" }
+      ],
+      "logConfiguration": {
+				 "logDriver":"awsfirelens",
+          "options": {
+            "Name": "s3",
+            "region": "us-east-1",
+            "bucket": "gobackend-dev-log-s3",
+            "total_file_size": "1M",
+            "upload_timeout": "1m",
+            "use_put_object": "On"
+          }
+			},
+			"memoryReservation": 256
+    }
+  ],
+
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "taskRoleArn": "gobackend-dev-ecs_task-role",
+  "executionRoleArn": "gobackend-dev-ecs_task_execution-role",
+  "cpu": "256",
+  "memory": "512"
+}

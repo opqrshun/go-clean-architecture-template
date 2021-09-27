@@ -39,8 +39,8 @@ type Routes []Route
 
 // const UseAuthURLPattern = "^/v1/user$|^/v1/user/.*|.*/favorite$|.*/like$"
 var UseAuthURLList = []string{
-	"/v1/parents/:parent-id/favorite",
-	"/v1/parents/:parent-id/like",
+	"/v1/entities/:entity-id/favorite",
+	"/v1/entities/:entity-id/like",
 }
 
 ////UseSentryLocalHub
@@ -79,7 +79,7 @@ func NewRouter() *gin.Engine {
 	//Add CORS midleware
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"http://localhost:3000", "http://localhost:6006", "*"}
-	config.AllowHeaders = []string{"Origin", "x-amzn-oidc-idmodel", "parent-type", "authorization"}
+	config.AllowHeaders = []string{"Origin", "x-amzn-oidc-idattribute", "entity-type", "authorization"}
 	config.AllowMethods = []string{"PUT", "PATCH", "POST", "GET", "DELETE"}
 	router.Use(cors.New(config))
 
@@ -120,66 +120,66 @@ var routes = Routes{
 	},
 
 	{
-		"CreateModel",
+		"CreateAttribute",
 		http.MethodPost,
-		"/v1/parents/:parent-id/models",
-		CreateModel,
+		"/v1/entities/:entity-id/attributes",
+		CreateAttribute,
 	},
 
 	{
-		"DeleteModel",
+		"DeleteAttribute",
 		http.MethodDelete,
-		"/v1/models/:model-id",
-		DeleteModel,
+		"/v1/attributes/:attribute-id",
+		DeleteAttribute,
 	},
 
 	{
-		"GetModel",
+		"GetAttribute",
 		http.MethodGet,
-		"/v1/models/:model-id",
-		GetModel,
+		"/v1/attributes/:attribute-id",
+		GetAttribute,
 	},
 
 	{
-		"GetModelsByParent",
+		"GetAttributesByEntity",
 		http.MethodGet,
-		"/v1/parents/:parent-id/models",
-		GetModelsByParent,
+		"/v1/entities/:entity-id/attributes",
+		GetAttributesByEntity,
 	},
 
 	{
-		"UpdateModel",
+		"UpdateAttribute",
 		http.MethodPatch,
-		"/v1/models/:model-id",
-		UpdateModel,
+		"/v1/attributes/:attribute-id",
+		UpdateAttribute,
 	},
 
 	{
-		"CreateParent",
+		"CreateEntity",
 		http.MethodPost,
-		"/v1/parents",
-		CreateParent,
+		"/v1/entities",
+		CreateEntity,
 	},
 
 	{
-		"GetParent",
+		"GetEntity",
 		http.MethodGet,
-		"/v1/parents/:parent-id",
-		GetParent,
+		"/v1/entities/:entity-id",
+		GetEntity,
 	},
 
 	{
-		"GetParents",
+		"GetEntities",
 		http.MethodGet,
-		"/v1/parents",
-		GetParents,
+		"/v1/entities",
+		GetEntities,
 	},
 
 	{
-		"UpdateParent",
+		"UpdateEntity",
 		http.MethodPatch,
-		"/v1/parents/:parent-id",
-		UpdateParent,
+		"/v1/entities/:entity-id",
+		UpdateEntity,
 	},
 
 }

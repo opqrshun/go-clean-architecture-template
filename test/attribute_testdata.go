@@ -2,28 +2,28 @@ package test
 
 import "time"
 
-type ModelCreate struct {
+type AttributeCreate struct {
 	Body string `json:"body" fake:"{sentence:10}`
 }
 
-type ModelUpdate struct {
+type AttributeUpdate struct {
 	Body string `json:"body" fake:"{sentence:13}`
 }
 
-type Model struct {
+type Attribute struct {
 	ID int `json:"id,omitempty"`
 
 	Body      string `json:"body" fake:"{sentence:10}`
-	ParentID string `json:"parent_id,omitempty"`
+	EntityID string `json:"entity_id,omitempty"`
 
 	UpdatedAt time.Time `json:"updated_time,omitempty"`
 	CreatedAt time.Time `json:"created_time,omitempty"`
 }
 
-type ModelInvalid struct {
+type AttributeInvalid struct {
 	Text string `json:"text"`
 }
 
-// type InvalidModel struct {
+// type InvalidAttribute struct {
 // 	ID int `json:"id"`
 // }

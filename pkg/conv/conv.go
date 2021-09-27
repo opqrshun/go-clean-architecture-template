@@ -52,7 +52,7 @@ func SliceHeadString(s string, h string) (string, bool) {
 	return r, true
 }
 
-// func (repo *Parent) ToInterfaceSliceFromIntSlice(s1 []int) (s2 []interface{}) {
+// func (repo *Entity) ToInterfaceSliceFromIntSlice(s1 []int) (s2 []interface{}) {
 //   s2 = make([]interface{}, len(s1))
 //   for i, v := range s1 {
 //      s2[i] = v
@@ -60,7 +60,7 @@ func SliceHeadString(s string, h string) (string, bool) {
 //   return
 // }
 
-// func (repo *Parent) ParseToIntList(s []string) (s2 []int,err error) {
+// func (repo *Entity) ParseToIntList(s []string) (s2 []int,err error) {
 //   var v2 float64
 // 	for _,v := range s {
 //     v2,err=strconv.Atoi(v)

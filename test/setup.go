@@ -7,38 +7,38 @@ import (
 	"github.com/brianvoe/gofakeit"
 )
 
-//SetParentTestDataWithUsername
-func SetParentTestData() (r model.Parent) {
-	//set parent
-	repository := repo.NewParent()
+//SetEntityTestDataWithUsername
+func SetEntityTestData() (r model.Entity) {
+	//set entity
+	repository := repo.NewEntity()
 
-	parent := model.Parent{
+	entity := model.Entity{
 		Body:  gofakeit.Sentence(1),
 	}
-	id, _ := repository.Store(&parent)
+	id, _ := repository.Store(&entity)
 	r, _ = repository.FindFullByID(id)
 	return
 }
 
-func SetModelTestData() (rModel model.Model) {
-	//set parent
-	repository := repo.NewParent()
+func SetAttributeTestData() (rAttribute model.Attribute) {
+	//set entity
+	repository := repo.NewEntity()
 
-	parent := model.Parent{
+	entity := model.Entity{
 		Body:  gofakeit.Sentence(1),
 	}
-	id, _ := repository.Store(&parent)
+	id, _ := repository.Store(&entity)
   r, _ := repository.FindFullByID(id)
 
-	//set model
-	repositoryModel := repo.NewModel()
+	//set attribute
+	repositoryAttribute := repo.NewAttribute()
 
-	model := model.Model{
+	attribute := model.Attribute{
 		Body:      gofakeit.Sentence(10),
-		ParentID: r.ID,
+		EntityID: r.ID,
 	}
 
-	modelID, _ := repositoryModel.Store(&model)
-	rModel, _ = repositoryModel.FindByID(modelID)
+	attributeID, _ := repositoryAttribute.Store(&attribute)
+	rAttribute, _ = repositoryAttribute.FindByID(attributeID)
 	return
 }

@@ -47,7 +47,7 @@ func (repo *Repository) FindBaseByID(m interface{}, id int) (error) {
   return BuildDBError(err,"repo.FindBaseByID")
 }
 
-func (repo *Parent) FindBaseByIDs(m interface{}, ids []int) (error) {
+func (repo *Entity) FindBaseByIDs(m interface{}, ids []int) (error) {
   err := repo.db.Where("id IN ?", ids).Find(m).Error
   return BuildDBError(err,"repo.FindBaseByIDs")
 }

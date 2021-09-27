@@ -50,40 +50,40 @@ func NewSQLHandler() *SQLHandler {
 }
 
 
-func (h *SQLHandler) Find(model interface{}) error {
-	err := h.db.Find(model).Error
+func (h *SQLHandler) Find(attribute interface{}) error {
+	err := h.db.Find(attribute).Error
   return BuildDBError(err,"repo.Find")
 }
 
-func (h *SQLHandler) FindByModel(m interface{},q interface{}) error {
+func (h *SQLHandler) FindByAttribute(m interface{},q interface{}) error {
   err := h.db.Where(q).First(m).Error
-  return BuildDBError(err,"repo.FindByModel")
+  return BuildDBError(err,"repo.FindByAttribute")
 }
 
-func (h *SQLHandler) FindWithPreload(model interface{}) error {
-	err := h.db.Preload(clause.Associations).First(model).Error;
+func (h *SQLHandler) FindWithPreload(attribute interface{}) error {
+	err := h.db.Preload(clause.Associations).First(attribute).Error;
   return BuildDBError(err,"repo.FindWithPreload")
 }
 
 //FindByConditionWithPreload with preload
-func (h *SQLHandler) FindByConditionWithPreload(model interface{}, c string, p []interface{}) error {
-	err := h.db.Preload(clause.Associations).Where(c, p...).First(model).Error
+func (h *SQLHandler) FindByConditionWithPreload(attribute interface{}, c string, p []interface{}) error {
+	err := h.db.Preload(clause.Associations).Where(c, p...).First(attribute).Error
   return BuildDBError(err,"repo.FindByConditionWithPreload")
 }
 
 //FindAll
-func (repo *Repository) FindAllWithPreload(model interface{}) (error) {
-  err := repo.db.Set("gorm:auto_preload", true).Find(model).Error
+func (repo *Repository) FindAllWithPreload(attribute interface{}) (error) {
+  err := repo.db.Set("gorm:auto_preload", true).Find(attribute).Error
   return BuildDBError(err,"repo.Find")
 }
 
-func (h *SQLHandler) FindAllByConditionWithPreload(model interface{}, c string, p []interface{}, offset int, limit int) ( error) {
-	err := h.db.Limit(limit).Offset(offset).Preload(clause.Associations).Where(c, p...).Find(model).Error
+func (h *SQLHandler) FindAllByConditionWithPreload(attribute interface{}, c string, p []interface{}, offset int, limit int) ( error) {
+	err := h.db.Limit(limit).Offset(offset).Preload(clause.Associations).Where(c, p...).Find(attribute).Error
   return BuildDBError(err,"repo.FindAllByConditionWithPreload")
 }
 
-func (h *SQLHandler) FindAllWithPreloadAndJoin(model interface{}, c string, p []interface{}, offset int, limit int, joins string) (error) {
-  err := h.db.Joins(joins).Limit(limit).Offset(offset).Preload(clause.Associations).Where(c, p...).Find(model).Error
+func (h *SQLHandler) FindAllWithPreloadAndJoin(attribute interface{}, c string, p []interface{}, offset int, limit int, joins string) (error) {
+  err := h.db.Joins(joins).Limit(limit).Offset(offset).Preload(clause.Associations).Where(c, p...).Find(attribute).Error
   return BuildDBError(err,"repo.FindAllWithPreloadAndJoin")
 }
 

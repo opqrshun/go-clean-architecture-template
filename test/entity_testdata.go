@@ -2,30 +2,30 @@ package test
 
 import "time"
 
-type ParentCreate struct {
+type EntityCreate struct {
 	Body     string   `json:"body" fake:"{sentence:3}"`
 }
 
-type ParentUpdate struct {
+type EntityUpdate struct {
 	ID       int 
 	Body     string   `json:"body" fake:"{sentence:2}"`
 }
 
-type Parent struct {
+type Entity struct {
 	ID int `json:"id,omitempty"`
 
 
 	Body           string `json:"body" fake:"{sentence:3}"`
-  Models []Model `json:"models,omitempty fake:"skip"`
+  Attributes []Attribute `json:"attributes,omitempty fake:"skip"`
 
 	CreatedAt time.Time `json:"created_time,omitempty"`
 	UpdatedAt time.Time `json:"updated_time,omitempty"`
 }
 
-type ParentInvalid struct {
+type EntityInvalid struct {
 	ID string `json:"id"`
 }
 
-// type InvalidParent struct {
+// type InvalidEntity struct {
 // 	ID string `json:"id"`
 // }

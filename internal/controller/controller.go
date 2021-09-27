@@ -8,12 +8,12 @@ import (
 
 type H map[string]interface{}
 
-//Parent type
+//Entity type
 type Controller struct {
 	Logger Logger
 }
 
-//NewParent New
+//NewEntity New
 func New(logger Logger) *Controller {
 	return &Controller{
 		Logger: logger,

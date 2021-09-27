@@ -9,33 +9,33 @@ import (
 	"gobackend/internal/usecase"
 )
 
-//Parent type
-type Parent struct {
+//Entity type
+type Entity struct {
 	*Controller
-	usecase usecase.Parent
+	usecase usecase.Entity
 }
 
-//NewParent New
-func NewParent(logger Logger) *Parent {
-	return &Parent{
+//NewEntity New
+func NewEntity(logger Logger) *Entity {
+	return &Entity{
 		Controller: New(logger),
-		usecase: usecase.Parent{
-			Repository: repo.NewParent(),
+		usecase: usecase.Entity{
+			Repository: repo.NewEntity(),
 		},
 	}
 }
 
-//Create Parent
-func (controller *Parent) Create(c Context) {
+//Create Entity
+func (controller *Entity) Create(c Context) {
   //validate
-	request := model.ParentDTO{}
-	if err := c.Bind(&request); err != nil {
+	dto := model.EntityDTO{}
+	if err := c.Bind(&dto); err != nil {
     controller.ResponseInvalidRequest(c, err)
     return
 	}
 
   //store
-	response, err := controller.usecase.Store(request)
+	response, err := controller.usecase.Store(dto)
 	if err != nil {
 		controller.ResponseWithError(c, err)
 		return
@@ -44,25 +44,25 @@ func (controller *Parent) Create(c Context) {
 }
 
 
-//Update Parent
-func (controller *Parent) Update(c Context) {
+//Update Entity
+func (controller *Entity) Update(c Context) {
   //validate
-	request := model.ParentDTO{}
-	if err := c.Bind(&request); err != nil {
+	dto := model.EntityDTO{}
+	if err := c.Bind(&dto); err != nil {
     controller.ResponseInvalidRequest(c, err)
 		return
 	}
 
-  id, err := strconv.Atoi(c.Param("parent-id"))
+  id, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
 		controller.ResponseInvalidRequest(c, err)
 		return
   }
 
-	request.ID = id
+	dto.ID = id
 
 
-	response, err := controller.usecase.Update(request)
+	response, err := controller.usecase.Update(dto)
 	if err != nil {
 		controller.ResponseWithError(c, err)
 		return
@@ -70,11 +70,11 @@ func (controller *Parent) Update(c Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-//FindAll Parent
-func (controller *Parent) FindAll(c Context) {
+//FindAll Entity
+func (controller *Entity) FindAll(c Context) {
 
   //validate
-	q := model.ParentQuery{}
+	q := model.EntityQuery{}
 	if err := c.ShouldBindQuery(&q); err != nil {
     controller.ResponseInvalidRequest(c, err)
     return
@@ -90,9 +90,9 @@ func (controller *Parent) FindAll(c Context) {
 }
 
 
-//FindByID ParentID
-func (controller *Parent) FindByID(c Context) {
-  id, err := strconv.Atoi(c.Param("parent-id"))
+//FindByID EntityID
+func (controller *Entity) FindByID(c Context) {
+  id, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
 		controller.ResponseInvalidRequest(c, err)
 		return

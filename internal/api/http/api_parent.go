@@ -12,8 +12,8 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	"gobackend/controller"
-	"gobackend/core/logger"
+	"gobackend/internal/controller"
+	"gobackend/pkg/logger"
 )
 
 var Parent = controller.NewParent(logger.GetLogger())

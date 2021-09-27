@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	repo "gobackend/repository/database"
+	repo "gobackend/internal/repository/database"
 	"gobackend/model"
 )
 

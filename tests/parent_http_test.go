@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	// "github.com/stretchr/testify/suite"
 
-	// "gobackend/core/identifier"
-	sw "gobackend/api/http"
+	// "gobackend/pkg/identifier"
+	sw "gobackend/internal/api/http"
 	"gobackend/tests"
 )
 

@@ -6,7 +6,7 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/stretchr/testify/assert"
 
-	repo "gobackend/repository/database"
+	repo "gobackend/internal/repository/database"
 	"gobackend/model"
 )
 

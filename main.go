@@ -12,7 +12,7 @@ package main
 import (
 	"log"
 
-	sw "gobackend/api/http"
+	sw "gobackend/internal/api/http"
 )
 
 func main() {

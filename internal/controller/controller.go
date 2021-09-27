@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"gobackend/core/errors"
+	"gobackend/pkg/errors"
 )
 
 type H map[string]interface{}

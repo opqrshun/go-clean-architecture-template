@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	repo "gobackend/repository/database"
+	repo "gobackend/internal/repository/database"
 	"gobackend/model"
-	"gobackend/usecase"
+	"gobackend/internal/usecase"
 )
 
 //Parent type

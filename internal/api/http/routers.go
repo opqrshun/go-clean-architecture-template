@@ -18,8 +18,8 @@ import (
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"gobackend/core/config"
-	"gobackend/core/conv"
+	"gobackend/internal/config"
+	"gobackend/pkg/conv"
 )
 
 // Route is the information for every URI.

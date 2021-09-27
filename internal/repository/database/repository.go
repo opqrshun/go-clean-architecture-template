@@ -1,7 +1,7 @@
 package database
 
 import (
-	"gobackend/core/errors"
+	"gobackend/pkg/errors"
 )
 
 type Repository struct {

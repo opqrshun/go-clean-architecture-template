@@ -11,9 +11,9 @@
 package http
 
 import (
-	"gobackend/controller"
+	"gobackend/internal/controller"
 	"github.com/gin-gonic/gin"
-	"gobackend/core/logger"
+	"gobackend/pkg/logger"
 )
 
 var Model = controller.NewModel(logger.GetLogger())

@@ -2,9 +2,9 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	"gobackend/controller"
-	"gobackend/core/errors"
-	"gobackend/core/logger"
+	"gobackend/internal/controller"
+	"gobackend/pkg/errors"
+	"gobackend/pkg/logger"
 )
 
 var Controller = controller.New(logger.GetLogger())

@@ -7,42 +7,33 @@ docker-compose -p gobackend up -d
 
 ### マイグレーション
 ```
-mysql -h 127.0.0.1 -P 3337 -u gobackend -pgobackend -D gobackend < schema/gobackend.sql
+mysql -h 127.0.0.1 -P 3338 -u gobackend -pgobackend -D gobackend < schema/base.sql
 ```
 
 phpmyadmin  
-http://localhost:9007/
+http://localhost:9008/
 
 ### 環境変数
 .envファイルで指定できます。
 
+```
+#!/usr/bin/env bash
+
+MYSQL_ROOT_PASSWORD=gobackend
+MYSQL_DATABASE=gobackend
+MYSQL_USER=gobackend
+MYSQL_PASSWORD=gobackend
+MYSQL_PORT=3338
+SERVER_PORT=8088
+GO_PORT=8089
+PHPMYADMIN_PORT=9008
+
+MYSQL_PROTOCOL="tcp(mariadb:3306)"
+
+
+```
+
 ### API動作確認
-```
-# ユーザー作成
-curl -H "Idp-Id: xxxx-xxxx-xxxx-xxx1" -X POST "http://localhost:8088/v1/user" 
-
-# ユーザー更新
-curl -d '{"nickname":"taki"}' -H "Parent-Type: application/json" -H "Idp-Id: xxxx-xxxx-xxxx-xxx1" -X PATCH "http://localhost:8088/v1/user" 
-
-# 投稿
-curl -d '{"body":"タイトル", "body":"メッセージ１","latitude":11,"longitude":111}' -H "Parent-Type: application/json" -H "Idp-Id: xxxx-xxxx-xxxx-xxx1" -X POST "http://localhost:8088/v1/parents" 
-
-# 取得
-curl -X GET "http://localhost:8088/v1/parents/1" 
-
-# 画像アップロード
-curl -H "Idp-Id: xxxx-xxxx-xxxx-xxx1" \
-  -X PUT http://localhost:8088/v1/parents/1/image\
-  -F "file=@test.png" \
-  -H "Parent-Type: multipart/form-data"
-  
-```
-
-### APIドキュメント
-https://d2td0y6q4q1g4n.cloudfront.net/document/api.html
-
-user      gobackend
-psss      XO7PRVfn
 
 ### build
 ```

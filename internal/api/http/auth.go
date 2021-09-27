@@ -24,7 +24,7 @@ func Auth() gin.HandlerFunc {
     // If the verification fails, abort and respond with Unauthorized status
 		if err != nil {
 			aerr := errors.Wrapf(err, "token is invalid, method: Auth").Unauthorized()
-			Controller.ResponseWithError(c, aerr)
+			Controller.RespondWithError(c, aerr)
 			c.Abort()
 			return
 		}

@@ -30,19 +30,19 @@ func NewAttribute(logger Logger) *Attribute {
 func (controller *Attribute) Create(c Context) {
   entityID, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
 	}
 
 	dto := model.AttributeDTO{}
 	if err := c.Bind(&dto); err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
 	}
 
 	response, err := controller.usecase.Store(entityID, dto)
 	if err != nil {
-		controller.ResponseWithError(c, err)
+		controller.RespondWithError(c, err)
 		return
 	}
 
@@ -53,12 +53,12 @@ func (controller *Attribute) Create(c Context) {
 func (controller *Attribute) Update(c Context) {
 	dto := model.AttributeDTO{}
 	if err := c.Bind(&dto); err != nil {
-		controller.ResponseWithError(c, err)
+		controller.RespondWithError(c, err)
 		return
 	}
   id, err := strconv.Atoi(c.Param("attribute-id"))
 	if err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
   }
 	dto.ID = id
@@ -66,7 +66,7 @@ func (controller *Attribute) Update(c Context) {
 
 	response, err := controller.usecase.Update(dto)
 	if err != nil {
-		controller.ResponseWithError(c, err)
+		controller.RespondWithError(c, err)
 		return
 	}
 
@@ -77,7 +77,7 @@ func (controller *Attribute) Update(c Context) {
 func (controller *Attribute) FindAll(c Context) {
 	response, err := controller.usecase.FindAll()
 	if err != nil {
-		controller.ResponseWithError(c, err)
+		controller.RespondWithError(c, err)
 		return
 	}
 	c.JSON(http.StatusOK, response)
@@ -87,18 +87,18 @@ func (controller *Attribute) FindAll(c Context) {
 func (controller *Attribute) FindAllByEntity(c Context) {
   entityID, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
   }
 
 	q := model.AttributeQuery{}
 	if err := c.ShouldBindQuery(&q); err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 	}
 
 	response, err := controller.usecase.FindAllByEntity(&q, entityID)
 	if err != nil {
-		controller.ResponseWithError(c, err)
+		controller.RespondWithError(c, err)
 		return
 	}
 	c.JSON(http.StatusOK, response)
@@ -108,18 +108,18 @@ func (controller *Attribute) FindAllByEntity(c Context) {
 func (controller *Attribute) FindByID(c Context) {
   id, err := strconv.Atoi(c.Param("attribute-id"))
 	if err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
   }
 
 	if err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
 	}
 
 	response, err := controller.usecase.FindByID(id)
 	if err != nil {
-		controller.ResponseWithError(c, err)
+		controller.RespondWithError(c, err)
 		return
 	}
 	c.JSON(http.StatusOK, response)
@@ -129,13 +129,13 @@ func (controller *Attribute) FindByID(c Context) {
 func (controller *Attribute) Delete(c Context) {
   id, err := strconv.Atoi(c.Param("attribute-id"))
 	if err != nil {
-		controller.ResponseInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
   }
 
 	err = controller.usecase.Delete(id)
 	if err != nil {
-		controller.ResponseWithError(c, err)
+		controller.RespondWithError(c, err)
 		return
 	}
 	c.JSON(http.StatusNoContent, gin.H{})

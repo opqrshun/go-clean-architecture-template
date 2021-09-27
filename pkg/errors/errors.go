@@ -14,7 +14,7 @@ type AppError struct {
 	// When loggint
 	level level
 
-	//for Response API
+	//for Respond API
 	code       string
 	displayMsg string
 	httpStatus int

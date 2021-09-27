@@ -20,8 +20,8 @@ func New(logger Logger) *Controller {
 	}
 }
 
-// ResponseWithError ...
-func (controller *Controller) ResponseWithError(c Context, err error) {
+// RespondWithError ...
+func (controller *Controller) RespondWithError(c Context, err error) {
 	var nextMsg string
 	if next := errors.Unwrap(err); next != nil {
 		nextMsg = next.Error()
@@ -33,7 +33,7 @@ func (controller *Controller) ResponseWithError(c Context, err error) {
 			"code":    aerr.Code(),
 			"message": aerr.DisplayMessage(),
 		})
-		controller.Logger.Errorw("method: ResponseWithError", "code", aerr.Code(), "msg", aerr.Error(), "childErr", nextMsg)
+		controller.Logger.Errorw("method: RespondWithError", "code", aerr.Code(), "msg", aerr.Error(), "childErr", nextMsg)
 	} else {
 		c.JSON(http.StatusInternalServerError, H{
 			"code":    "unknown",
@@ -43,8 +43,8 @@ func (controller *Controller) ResponseWithError(c Context, err error) {
 	return
 }
 
-func (controller *Controller) ResponseInvalidRequest(c Context,err error) {
-  controller.ResponseWithError(c, errors.Errorf("invalid request, err: %v", err).InvalidRequest())
+func (controller *Controller) RespondInvalidRequest(c Context,err error) {
+  controller.RespondWithError(c, errors.Errorf("invalid request, err: %v", err).InvalidRequest())
 }
 
 //GetAuthorizedID

@@ -12,7 +12,7 @@ RUN go mod init
 RUN go mod tidy 
 
 ENV CGO_ENABLED=0
-RUN go build -o gobackend .
+RUN go build -o gobackend ./cmd
 
 FROM scratch AS runtime
 ENV GIN_MODE=release

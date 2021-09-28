@@ -1,8 +1,8 @@
 package test
 
 import (
-	repo "github.com/ttaki/go-clean-architecture-sample/internal/repository/database"
-	"github.com/ttaki/go-clean-architecture-sample/model"
+	repo "github.com/ttaki/go-clean-architecture-template/internal/repository/database"
+	"github.com/ttaki/go-clean-architecture-template/model"
 
 	"github.com/brianvoe/gofakeit"
 )

@@ -2,7 +2,7 @@ package usecase
 
 import (
 	// "fmt"
-	"github.com/ttaki/go-clean-architecture-sample/model"
+	"github.com/ttaki/go-clean-architecture-template/model"
 )
 
 type Entity struct {

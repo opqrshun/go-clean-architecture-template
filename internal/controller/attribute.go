@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
-	repo "github.com/ttaki/go-clean-architecture-sample/internal/repository/database"
-	"github.com/ttaki/go-clean-architecture-sample/internal/usecase"
-	"github.com/ttaki/go-clean-architecture-sample/model"
+	repo "github.com/ttaki/go-clean-architecture-template/internal/repository/database"
+	"github.com/ttaki/go-clean-architecture-template/internal/usecase"
+	"github.com/ttaki/go-clean-architecture-template/model"
 )
 
 //Attribute type

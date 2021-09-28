@@ -7,8 +7,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 
-	"github.com/ttaki/go-clean-architecture-sample/internal/config"
-	"github.com/ttaki/go-clean-architecture-sample/pkg/errors"
+	"github.com/ttaki/go-clean-architecture-template/internal/config"
+	"github.com/ttaki/go-clean-architecture-template/pkg/errors"
 )
 
 type SQLHandler struct {

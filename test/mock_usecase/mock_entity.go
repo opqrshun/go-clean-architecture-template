@@ -5,8 +5,8 @@
 package mock_usecase
 
 import (
-	database "github.com/ttaki/go-clean-architecture-sample/internal/repository/database"
-	model "github.com/ttaki/go-clean-architecture-sample/model"
+	database "github.com/ttaki/go-clean-architecture-template/internal/repository/database"
+	model "github.com/ttaki/go-clean-architecture-template/model"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"

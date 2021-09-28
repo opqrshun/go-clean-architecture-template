@@ -4,8 +4,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/ttaki/go-clean-architecture-sample/model"
-	"github.com/ttaki/go-clean-architecture-sample/pkg/errors"
+	"github.com/ttaki/go-clean-architecture-template/model"
+	"github.com/ttaki/go-clean-architecture-template/pkg/errors"
 )
 
 type Attribute struct {

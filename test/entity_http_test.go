@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	// "github.com/stretchr/testify/suite"
 
-	// "github.com/ttaki/go-clean-architecture-sample/pkg/identifier"
-	sw "github.com/ttaki/go-clean-architecture-sample/internal/api/http"
+	// "github.com/ttaki/go-clean-architecture-template/pkg/identifier"
+	sw "github.com/ttaki/go-clean-architecture-template/internal/api/http"
 )
 
 func TestPingEntityRoute(t *testing.T) {

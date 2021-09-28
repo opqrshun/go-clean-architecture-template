@@ -7,6 +7,6 @@ import (
 // gomock "github.com/golang/mock/gomock"
 // "github.com/stretchr/testify/assert"
 
-// "github.com/ttaki/go-clean-architecture-sample/pkg/identifier"
-// "github.com/ttaki/go-clean-architecture-sample/mock"
+// "github.com/ttaki/go-clean-architecture-template/pkg/identifier"
+// "github.com/ttaki/go-clean-architecture-template/mock"
 )

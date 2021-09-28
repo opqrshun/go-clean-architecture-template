@@ -1,4 +1,4 @@
-# go-clean-architecture-sample
+# go-clean-architecture-template
 
 - OpenAPI
 - Gin

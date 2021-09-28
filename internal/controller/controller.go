@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"github.com/ttaki/go-clean-architecture-sample/pkg/errors"
+	"github.com/ttaki/go-clean-architecture-template/pkg/errors"
 )
 
 type H map[string]interface{}

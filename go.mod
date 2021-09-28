@@ -1,4 +1,4 @@
-module github.com/ttaki/go-clean-architecture-sample
+module github.com/ttaki/go-clean-architecture-template
 
 go 1.16
 

@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/ttaki/go-clean-architecture-sample/pkg/errors"
+	"github.com/ttaki/go-clean-architecture-template/pkg/errors"
 )
 
 type Repository struct {

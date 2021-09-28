@@ -12,7 +12,7 @@ package main
 import (
 	"log"
 
-	sw "github.com/ttaki/go-clean-architecture-sample/internal/api/http"
+	sw "github.com/ttaki/go-clean-architecture-template/internal/api/http"
 )
 
 func main() {

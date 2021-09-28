@@ -34,6 +34,7 @@ go get github.com/joho/godotenv/cmd/godotenv
 
 run test
 ```
-godotenv -f .env.local go test -v ./...```
+godotenv -f .env.local go test -v ./...
+```
 
 

@@ -1,4 +1,14 @@
-# gobackend
+# go-clean-architecture-sample
+
+- OpenAPI
+- Gin
+- Unit test
+- Gorm
+
+### data model
+- Entity
+- Attribute
+
 
 ### docker
 ```
@@ -15,8 +25,6 @@ phpmyadmin
 http://localhost:9008/
 
 
-
-### API動作確認
 
 
 ### build

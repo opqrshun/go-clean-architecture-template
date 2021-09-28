@@ -37,11 +37,6 @@ type Route struct {
 // Routes is the list of the generated Route.
 type Routes []Route
 
-// const UseAuthURLPattern = "^/v1/user$|^/v1/user/.*|.*/favorite$|.*/like$"
-var UseAuthURLList = []string{
-	"/v1/entities/:entity-id/favorite",
-	"/v1/entities/:entity-id/like",
-}
 
 ////UseSentryLocalHub
 //func UseSentryLocalHub (ctx *gin.Context, tagKey string,tagValue string) {
@@ -86,12 +81,7 @@ func NewRouter() *gin.Engine {
 	for _, route := range routes {
 		switch route.Method {
 		case http.MethodGet:
-			if ok := conv.Contains(UseAuthURLList, route.Pattern); ok {
-				router.GET(route.Pattern, Auth(), route.HandlerFunc)
-			} else {
-				router.GET(route.Pattern, route.HandlerFunc)
-			}
-
+			router.GET(route.Pattern, Auth(), route.HandlerFunc)
 		case http.MethodPost:
 			router.POST(route.Pattern, Auth(), route.HandlerFunc)
 		case http.MethodPut:

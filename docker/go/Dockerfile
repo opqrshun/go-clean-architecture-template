@@ -18,7 +18,7 @@ FROM scratch AS runtime
 ENV GIN_MODE=release
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=build /go/src/gobackend/gobackend ./
-COPY --from=build /go/src/gobackend/.env ./
+# COPY --from=build /go/src/gobackend/.env ./
 EXPOSE 8080/tcp
 ENTRYPOINT ["./gobackend"]
 

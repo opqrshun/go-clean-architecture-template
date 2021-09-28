@@ -1,9 +1,5 @@
 package errors
 
-import (
-	errbase "errors"
-)
-
 type level string
 
 const (

@@ -9,6 +9,8 @@ services:
       - ${GO_PORT}:8080
     depends_on:
       - mariadb
+    env_file:
+      - .env.docker
 
     # volumes:
     #   - ../:/go/src/
@@ -26,6 +28,8 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ../docker_data/go-backend/db/data:/var/lib/mysql
+    env_file:
+      - .env.docker
       
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -40,6 +44,8 @@ services:
       - mariadb
     volumes:
      - ../docker_data/go-backend/phpmyadmin/sessions:/sessions
+    env_file:
+      - .env.docker
 # volumes:
 #   wordpress:
 #   mariadb:

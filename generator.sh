@@ -10,7 +10,7 @@ mkdir $PROJECT_DIR
 rsync -av $SHELL_DIR/ $PROJECT_DIR/ # --exclude "attribute*"
 
 sed -i "s/go-clean-architecture/${PROJECT_DIR}/g" $(fd -e go --full-path $PROJECT_DIR ) 
-sed -i "s/model/${attribute}/g" $(fd -e go --full-path $PROJECT_DIR ) 
+sed -i "s/attribute/${attribute}/g" $(fd -e go --full-path $PROJECT_DIR ) 
 sed -i "s/Attribute/${Attribute}/g" $(fd -e go --full-path $PROJECT_DIR ) 
 
 find $PROJECT_DIR -name '*attribute*' | xargs -L 1 rename attribute ${attribute}

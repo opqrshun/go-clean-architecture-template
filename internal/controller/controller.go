@@ -22,6 +22,7 @@ func New(logger Logger) *Controller {
 
 // RespondWithError ...
 func (controller *Controller) RespondWithError(c Context, err error) {
+	// If the error is wrapped, get the error message of the child.
 	var nextMsg string
 	if next := errors.Unwrap(err); next != nil {
 		nextMsg = next.Error()

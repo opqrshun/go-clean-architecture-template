@@ -1,7 +1,6 @@
 package database
 
-import (
-)
+import ()
 
 type Base interface {
 	GetID() int

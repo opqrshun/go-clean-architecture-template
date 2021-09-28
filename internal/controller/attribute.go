@@ -1,13 +1,13 @@
 package controller
 
 import (
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
-	"github.com/gin-gonic/gin"
 
 	repo "gobackend/internal/repository/database"
-	"gobackend/model"
 	"gobackend/internal/usecase"
+	"gobackend/model"
 )
 
 //Attribute type
@@ -28,7 +28,7 @@ func NewAttribute(logger Logger) *Attribute {
 
 //Create Attribute
 func (controller *Attribute) Create(c Context) {
-  entityID, err := strconv.Atoi(c.Param("entity-id"))
+	entityID, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
 		return
@@ -39,7 +39,7 @@ func (controller *Attribute) Create(c Context) {
 		controller.RespondInvalidRequest(c, err)
 		return
 	}
-  dto.EntityID = entityID
+	dto.EntityID = entityID
 
 	response, err := controller.usecase.Store(dto)
 	if err != nil {
@@ -57,13 +57,12 @@ func (controller *Attribute) Update(c Context) {
 		controller.RespondWithError(c, err)
 		return
 	}
-  id, err := strconv.Atoi(c.Param("attribute-id"))
+	id, err := strconv.Atoi(c.Param("attribute-id"))
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
 		return
-  }
+	}
 	dto.ID = id
-
 
 	response, err := controller.usecase.Update(dto)
 	if err != nil {
@@ -86,11 +85,11 @@ func (controller *Attribute) FindAll(c Context) {
 
 //FindAllByAttribute
 func (controller *Attribute) FindAllByEntity(c Context) {
-  entityID, err := strconv.Atoi(c.Param("entity-id"))
+	entityID, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
 		return
-  }
+	}
 
 	q := model.AttributeQuery{}
 	if err := c.ShouldBindQuery(&q); err != nil {
@@ -107,11 +106,11 @@ func (controller *Attribute) FindAllByEntity(c Context) {
 
 //FindByID AttributeID
 func (controller *Attribute) FindByID(c Context) {
-  id, err := strconv.Atoi(c.Param("attribute-id"))
+	id, err := strconv.Atoi(c.Param("attribute-id"))
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
 		return
-  }
+	}
 
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
@@ -128,11 +127,11 @@ func (controller *Attribute) FindByID(c Context) {
 
 //Delete Attribute
 func (controller *Attribute) Delete(c Context) {
-  id, err := strconv.Atoi(c.Param("attribute-id"))
+	id, err := strconv.Atoi(c.Param("attribute-id"))
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
 		return
-  }
+	}
 
 	err = controller.usecase.Delete(id)
 	if err != nil {

@@ -1,8 +1,8 @@
 package test
 
 import (
-	"gobackend/model"
 	repo "gobackend/internal/repository/database"
+	"gobackend/model"
 
 	"github.com/brianvoe/gofakeit"
 )
@@ -13,7 +13,7 @@ func SetEntityTestData() (r model.Entity) {
 	repository := repo.NewEntity()
 
 	entity := model.Entity{
-		Body:  gofakeit.Sentence(1),
+		Body: gofakeit.Sentence(1),
 	}
 	id, _ := repository.Store(&entity)
 	r, _ = repository.FindFullByID(id)
@@ -25,16 +25,16 @@ func SetAttributeTestData() (rAttribute model.Attribute) {
 	repository := repo.NewEntity()
 
 	entity := model.Entity{
-		Body:  gofakeit.Sentence(1),
+		Body: gofakeit.Sentence(1),
 	}
 	id, _ := repository.Store(&entity)
-  r, _ := repository.FindFullByID(id)
+	r, _ := repository.FindFullByID(id)
 
 	//set attribute
 	repositoryAttribute := repo.NewAttribute()
 
 	attribute := model.Attribute{
-		Body:      gofakeit.Sentence(10),
+		Body:     gofakeit.Sentence(10),
 		EntityID: r.ID,
 	}
 

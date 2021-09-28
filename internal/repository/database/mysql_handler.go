@@ -49,56 +49,49 @@ func NewSQLHandler() *SQLHandler {
 	return sqlHandler
 }
 
-
 func (h *SQLHandler) Find(attribute interface{}) error {
 	err := h.db.Find(attribute).Error
-  return BuildDBError(err,"repo.Find")
+	return BuildDBError(err, "repo.Find")
 }
 
-func (h *SQLHandler) FindByAttribute(m interface{},q interface{}) error {
-  err := h.db.Where(q).First(m).Error
-  return BuildDBError(err,"repo.FindByAttribute")
+func (h *SQLHandler) FindByAttribute(m interface{}, q interface{}) error {
+	err := h.db.Where(q).First(m).Error
+	return BuildDBError(err, "repo.FindByAttribute")
 }
 
 func (h *SQLHandler) FindWithPreload(attribute interface{}) error {
-	err := h.db.Preload(clause.Associations).First(attribute).Error;
-  return BuildDBError(err,"repo.FindWithPreload")
+	err := h.db.Preload(clause.Associations).First(attribute).Error
+	return BuildDBError(err, "repo.FindWithPreload")
 }
 
 //FindByConditionWithPreload with preload
 func (h *SQLHandler) FindByConditionWithPreload(attribute interface{}, c string, p []interface{}) error {
 	err := h.db.Preload(clause.Associations).Where(c, p...).First(attribute).Error
-  return BuildDBError(err,"repo.FindByConditionWithPreload")
+	return BuildDBError(err, "repo.FindByConditionWithPreload")
 }
 
 //FindAll
-func (repo *Repository) FindAllWithPreload(attribute interface{}) (error) {
-  err := repo.db.Set("gorm:auto_preload", true).Find(attribute).Error
-  return BuildDBError(err,"repo.Find")
+func (repo *Repository) FindAllWithPreload(attribute interface{}) error {
+	err := repo.db.Set("gorm:auto_preload", true).Find(attribute).Error
+	return BuildDBError(err, "repo.Find")
 }
 
-func (h *SQLHandler) FindAllByConditionWithPreload(attribute interface{}, c string, p []interface{}, offset int, limit int) ( error) {
+func (h *SQLHandler) FindAllByConditionWithPreload(attribute interface{}, c string, p []interface{}, offset int, limit int) error {
 	err := h.db.Limit(limit).Offset(offset).Preload(clause.Associations).Where(c, p...).Find(attribute).Error
-  return BuildDBError(err,"repo.FindAllByConditionWithPreload")
+	return BuildDBError(err, "repo.FindAllByConditionWithPreload")
 }
 
-func (h *SQLHandler) FindAllWithPreloadAndJoin(attribute interface{}, c string, p []interface{}, offset int, limit int, joins string) (error) {
-  err := h.db.Joins(joins).Limit(limit).Offset(offset).Preload(clause.Associations).Where(c, p...).Find(attribute).Error
-  return BuildDBError(err,"repo.FindAllWithPreloadAndJoin")
+func (h *SQLHandler) FindAllWithPreloadAndJoin(attribute interface{}, c string, p []interface{}, offset int, limit int, joins string) error {
+	err := h.db.Joins(joins).Limit(limit).Offset(offset).Preload(clause.Associations).Where(c, p...).Find(attribute).Error
+	return BuildDBError(err, "repo.FindAllWithPreloadAndJoin")
 }
 
-
-
-func BuildDBError (err error, methodName string) (error) {
+func BuildDBError(err error, methodName string) error {
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return errors.Wrapf(err, "record is not found, method: "+ methodName ).NotFound()
+			return errors.Wrapf(err, "record is not found, method: "+methodName).NotFound()
 		}
-		return errors.Wrapf(err, "database error, method: "+ methodName).DatabaseError()
+		return errors.Wrapf(err, "database error, method: "+methodName).DatabaseError()
 	}
 	return nil
 }
-
-
-
-

@@ -9,13 +9,13 @@ import (
 )
 
 type Attribute struct {
-	Index    int
+	Index      int
 	attributes map[int]model.Attribute
 }
 
 func NewAttribute() *Attribute {
 	return &Attribute{
-		Index:    0,
+		Index:      0,
 		attributes: make(map[int]model.Attribute),
 	}
 }
@@ -35,7 +35,7 @@ func (repo *Attribute) Store(m model.Attribute) (id int, err error) {
 func (repo *Attribute) Update(m model.Attribute) (int, error) {
 	_, ok := repo.attributes[m.ID]
 	if !ok {
-    return 0, errors.Errorf("record is not found").NotFound()
+		return 0, errors.Errorf("record is not found").NotFound()
 	}
 
 	m.UpdatedAt = time.Now()
@@ -48,14 +48,14 @@ func (repo *Attribute) FindByID(id int) (model.Attribute, error) {
 	m, ok := repo.attributes[id]
 
 	if !ok {
-    return model.Attribute{},errors.Errorf("record is not found").NotFound()
+		return model.Attribute{}, errors.Errorf("record is not found").NotFound()
 	}
 	return m, nil
 }
 
 func (repo *Attribute) FindAll() ([]model.Attribute, error) {
 	//sort map key
-  var s []model.Attribute
+	var s []model.Attribute
 
 	var keys []int
 	for k := range repo.attributes {
@@ -69,11 +69,11 @@ func (repo *Attribute) FindAll() ([]model.Attribute, error) {
 }
 
 //Delete
-func (repo *Attribute) Delete(id int) (error) {
+func (repo *Attribute) Delete(id int) error {
 	_, ok := repo.attributes[id]
 
 	if !ok {
-    return errors.Errorf("record is not found").NotFound()
+		return errors.Errorf("record is not found").NotFound()
 	}
 
 	delete(repo.attributes, id)

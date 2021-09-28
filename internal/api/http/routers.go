@@ -79,7 +79,7 @@ func NewRouter() *gin.Engine {
 	//Add CORS midleware
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"http://localhost:3000", "http://localhost:6006", "*"}
-	config.AllowHeaders = []string{"Origin","content-type", "authorization"}
+	config.AllowHeaders = []string{"Origin", "content-type", "authorization"}
 	config.AllowMethods = []string{"PUT", "PATCH", "POST", "GET", "DELETE"}
 	router.Use(cors.New(config))
 
@@ -181,5 +181,4 @@ var routes = Routes{
 		"/v1/entities/:entity-id",
 		UpdateEntity,
 	},
-
 }

@@ -20,9 +20,9 @@ func NewEntity() *Entity {
 	}
 }
 
-func (repo *Entity) Store(m model.Entity) (int,error) {
+func (repo *Entity) Store(m model.Entity) (int, error) {
 	// todo refactoring
-  id := repo.Index + 1
+	id := repo.Index + 1
 	repo.Index = id
 	m.ID = id
 	m.CreatedAt = time.Now()
@@ -35,7 +35,7 @@ func (repo *Entity) Store(m model.Entity) (int,error) {
 func (repo *Entity) Update(m model.Entity) (int, error) {
 	_, ok := repo.entities[m.ID]
 	if !ok {
-    return 0, errors.Errorf("record is not found").NotFound()
+		return 0, errors.Errorf("record is not found").NotFound()
 	}
 
 	m.UpdatedAt = time.Now()
@@ -49,13 +49,13 @@ func (repo *Entity) FindByID(id int) (model.Entity, error) {
 	m, ok := repo.entities[id]
 
 	if !ok {
-    return model.Entity{}, errors.Errorf("record is not found").NotFound()
+		return model.Entity{}, errors.Errorf("record is not found").NotFound()
 	}
 	return m, nil
 }
 
 func (repo *Entity) FindAll() ([]model.Entity, error) {
-  var s []model.Entity
+	var s []model.Entity
 	//sort map key
 	var keys []int
 	for k := range repo.entities {
@@ -69,11 +69,11 @@ func (repo *Entity) FindAll() ([]model.Entity, error) {
 }
 
 //Delete
-func (repo *Entity) Delete(id int) (error) {
+func (repo *Entity) Delete(id int) error {
 	_, ok := repo.entities[id]
 
 	if !ok {
-    return errors.Errorf("record is not found").NotFound()
+		return errors.Errorf("record is not found").NotFound()
 	}
 
 	delete(repo.entities, id)

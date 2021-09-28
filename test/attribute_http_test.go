@@ -2,12 +2,12 @@ package test
 
 import (
 	// "bytes"
-	"strconv"
 	"encoding/json"
 	"fmt"
 	sw "gobackend/internal/api/http"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"testing"
 
 	// "github.com/brianvoe/gofakeit"
@@ -36,7 +36,6 @@ func TestCreateAttributeInvalidRoute(t *testing.T) {
 	assert.Equal(t, 400, w.Code)
 }
 
-
 // test deleteAttribute
 func TestDeleteAttributeRoute(t *testing.T) {
 	attribute := SetAttributeTestData()
@@ -47,7 +46,6 @@ func TestDeleteAttributeRoute(t *testing.T) {
 	req, _ := http.NewRequest("DELETE", "/v1/attributes/"+strconv.Itoa(attribute.ID), nil)
 	req.Header.Set("authorization", "")
 	router.ServeHTTP(w, req)
-
 
 	assert.Equal(t, 204, w.Code)
 }
@@ -74,4 +72,3 @@ func TestFindByIDAttributeRoute(t *testing.T) {
 	assert.Equal(t, attributeID, response.ID)
 	assert.Equal(t, attribute.Body, response.Body)
 }
-

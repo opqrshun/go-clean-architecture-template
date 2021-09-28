@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	repo "gobackend/internal/repository/database"
-	"gobackend/model"
 	"gobackend/internal/usecase"
+	"gobackend/model"
 )
 
 //Entity type
@@ -27,14 +27,14 @@ func NewEntity(logger Logger) *Entity {
 
 //Create Entity
 func (controller *Entity) Create(c Context) {
-  //validate
+	//validate
 	dto := model.EntityDTO{}
 	if err := c.Bind(&dto); err != nil {
-    controller.RespondInvalidRequest(c, err)
-    return
+		controller.RespondInvalidRequest(c, err)
+		return
 	}
 
-  //store
+	//store
 	response, err := controller.usecase.Store(dto)
 	if err != nil {
 		controller.RespondWithError(c, err)
@@ -43,24 +43,22 @@ func (controller *Entity) Create(c Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
-
 //Update Entity
 func (controller *Entity) Update(c Context) {
-  //validate
+	//validate
 	dto := model.EntityDTO{}
 	if err := c.Bind(&dto); err != nil {
-    controller.RespondInvalidRequest(c, err)
+		controller.RespondInvalidRequest(c, err)
 		return
 	}
 
-  id, err := strconv.Atoi(c.Param("entity-id"))
+	id, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
 		return
-  }
+	}
 
 	dto.ID = id
-
 
 	response, err := controller.usecase.Update(dto)
 	if err != nil {
@@ -73,11 +71,11 @@ func (controller *Entity) Update(c Context) {
 //FindAll Entity
 func (controller *Entity) FindAll(c Context) {
 
-  //validate
+	//validate
 	q := model.EntityQuery{}
 	if err := c.ShouldBindQuery(&q); err != nil {
-    controller.RespondInvalidRequest(c, err)
-    return
+		controller.RespondInvalidRequest(c, err)
+		return
 	}
 
 	response, err := controller.usecase.FindAll(&q)
@@ -89,14 +87,13 @@ func (controller *Entity) FindAll(c Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-
 //FindByID EntityID
 func (controller *Entity) FindByID(c Context) {
-  id, err := strconv.Atoi(c.Param("entity-id"))
+	id, err := strconv.Atoi(c.Param("entity-id"))
 	if err != nil {
 		controller.RespondInvalidRequest(c, err)
 		return
-  }
+	}
 
 	response, err := controller.usecase.FindByID(id)
 	if err != nil {

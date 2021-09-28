@@ -26,7 +26,6 @@ type Event struct {
 // }
 
 var (
-
 	invalidArgValue = Event{
 		"invalid_arg_value",
 		errorLevel,
@@ -128,21 +127,19 @@ func (e *AppError) setEvent(event Event) *AppError {
 	return e
 }
 
-
 //IsNotFound
 //check err, example, an error wrapped with a not found record error
 func IsNotFound(err error) bool {
-  return checkCode(err,NotFound)
+	return checkCode(err, NotFound)
 }
 
-func checkCode(err error,code string) bool {
-  aerr := AsAppError(err)
-  if aerr == nil {
-    return false
-  }
+func checkCode(err error, code string) bool {
+	aerr := AsAppError(err)
+	if aerr == nil {
+		return false
+	}
 	return aerr.code == code
 }
-
 
 const (
 	InvalidRequest = "invalid_request"
@@ -152,4 +149,3 @@ const (
 	Forbidden      = "forbidden"
 	Unknown        = "unknown"
 )
-

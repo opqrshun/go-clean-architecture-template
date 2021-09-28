@@ -2,23 +2,22 @@ package model
 
 import (
 	"gorm.io/gorm"
-
 )
 
 // Entity - A single entity.
 type Entity struct {
 	Base
-	Body            string  `json:"body,omitempty"`
+	Body string `json:"body,omitempty"`
 
-	DeletedAt gorm.DeletedAt
+	DeletedAt  gorm.DeletedAt
 	Attributes []Attribute `json:"attributes,omitempty"`
 }
 
 //ToEntity convert to Entity, return Entity pointer
-func ToEntity(dto EntityDTO) *Entity{
-  return &Entity{
-		Body:              dto.Body,
-  }
+func ToEntity(dto EntityDTO) *Entity {
+	return &Entity{
+		Body: dto.Body,
+	}
 }
 
 func (entity *Entity) SetRequest(dto EntityDTO) {
@@ -27,15 +26,15 @@ func (entity *Entity) SetRequest(dto EntityDTO) {
 
 // Entity - A single entity.
 type EntityDTO struct {
-	ID    int
-	Body  string `json:"body,omitempty"`
+	ID   int
+	Body string `json:"body,omitempty"`
 
 	// EntityImageURL string `json:"entity_image_url,omitempty"`
 }
 
 // Entity - A single entity.
 type EntityQuery struct {
-	Query string `form:"query"`
+	Query    string `form:"query"`
 	Page     int    `form:"page"`
 	PageSize int    `form:"page_size"`
 }

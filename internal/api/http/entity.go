@@ -18,7 +18,6 @@ import (
 
 var Entity = controller.NewEntity(logger.GetLogger())
 
-
 // CreateEntity -
 func CreateEntity(c *gin.Context) {
 	Entity.Create(c)

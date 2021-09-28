@@ -5,11 +5,10 @@ import (
 )
 
 type Base struct {
-	ID        int `json:"id,omitempty" gorm:"primary_key;"`
-	CreatedAt time.Time     `json:"created_time,omitempty"`
-	UpdatedAt time.Time     `json:"updated_time,omitempty"`
+	ID        int       `json:"id,omitempty" gorm:"primary_key;"`
+	CreatedAt time.Time `json:"created_time,omitempty"`
+	UpdatedAt time.Time `json:"updated_time,omitempty"`
 }
-
 
 func (base *Base) GetID() int {
 	return base.ID
@@ -30,4 +29,3 @@ func (base *Base) GetUpdatedAt() time.Time {
 func (base *Base) SetCurrentTimeUpdatedAt() {
 	base.UpdatedAt = time.Now()
 }
-

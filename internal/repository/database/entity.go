@@ -15,29 +15,28 @@ func NewEntity() *Entity {
 
 //FindByID
 func (repo *Entity) FindByID(id int) (model.Entity, error) {
-  var m model.Entity
-  err := repo.FindBaseByID(&m, id)
+	var m model.Entity
+	err := repo.FindBaseByID(&m, id)
 	return m, err
 }
 
 //FindFullByID
 func (repo *Entity) FindFullByID(id int) (model.Entity, error) {
-  var m model.Entity
+	var m model.Entity
 	m.ID = id
-  err := repo.FindWithPreload(&m)
+	err := repo.FindWithPreload(&m)
 	return m, err
 }
 
 //FindAllFull
 func (repo *Entity) FindAllFull(q *model.EntityQuery) ([]model.Entity, error) {
-  var s []model.Entity
+	var s []model.Entity
 	condition, params := repo.BuildConditionParams(q)
 	offset, limit := repo.GetOffsetLimit(q.Page, q.PageSize)
 
-  err := repo.FindAllByConditionWithPreload(&s, condition, params, offset, limit)
+	err := repo.FindAllByConditionWithPreload(&s, condition, params, offset, limit)
 	return s, err
 }
-
 
 //BuildConditionParams
 func (repo *Entity) BuildConditionParams(q *model.EntityQuery) (condition string, params []interface{}) {
@@ -54,11 +53,9 @@ func (repo *Entity) BuildConditionParams(q *model.EntityQuery) (condition string
 	return
 }
 
-
 //FindAll
 func (repo *Entity) FindAll() ([]model.Entity, error) {
-  var s []model.Entity
-  err := repo.Find(&s)
+	var s []model.Entity
+	err := repo.Find(&s)
 	return s, err
 }
-

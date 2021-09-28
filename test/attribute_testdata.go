@@ -13,7 +13,7 @@ type AttributeUpdate struct {
 type Attribute struct {
 	ID int `json:"id,omitempty"`
 
-	Body      string `json:"body" fake:"{sentence:10}`
+	Body     string `json:"body" fake:"{sentence:10}`
 	EntityID string `json:"entity_id,omitempty"`
 
 	UpdatedAt time.Time `json:"updated_time,omitempty"`

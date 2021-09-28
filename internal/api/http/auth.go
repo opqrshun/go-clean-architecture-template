@@ -9,7 +9,6 @@ import (
 
 var Controller = controller.New(logger.GetLogger())
 
-
 // Auth - 認証(認可)を行うミドルウェア。
 // headerをバリデーションし、アクセスキーの検証を行う。
 // 検証に成功した場合、Contextにアクセスキー検証状態を保持。
@@ -18,10 +17,10 @@ var Controller = controller.New(logger.GetLogger())
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
-    accessKey := ""
-    var err error
+		accessKey := ""
+		var err error
 
-    // If the verification fails, abort and respond with Unauthorized status
+		// If the verification fails, abort and respond with Unauthorized status
 		if err != nil {
 			aerr := errors.Wrapf(err, "token is invalid, method: Auth").Unauthorized()
 			Controller.RespondWithError(c, aerr)
@@ -35,8 +34,6 @@ func Auth() gin.HandlerFunc {
 	}
 }
 
-
 type Header struct {
 	accessKey string `header:"authorization" binding:"required"`
 }
-

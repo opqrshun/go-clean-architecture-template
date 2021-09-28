@@ -44,8 +44,8 @@ func (controller *Controller) RespondWithError(c Context, err error) {
 	return
 }
 
-func (controller *Controller) RespondInvalidRequest(c Context,err error) {
-  controller.RespondWithError(c, errors.Errorf("invalid request, err: %v", err).InvalidRequest())
+func (controller *Controller) RespondInvalidRequest(c Context, err error) {
+	controller.RespondWithError(c, errors.Errorf("invalid request, err: %v", err).InvalidRequest())
 }
 
 //GetAuthorizedID

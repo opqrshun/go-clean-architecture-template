@@ -15,43 +15,43 @@ func NewAttribute() *Attribute {
 
 //FindByID
 func (repo *Attribute) FindByID(id int) (model.Attribute, error) {
-  var m model.Attribute
-  err := repo.FindBaseByID(&m, id)
+	var m model.Attribute
+	err := repo.FindBaseByID(&m, id)
 	return m, err
 }
 
 // FindAll
 func (repo *Attribute) FindAll() ([]model.Attribute, error) {
-  var s []model.Attribute
-  err := repo.Find(&s)
+	var s []model.Attribute
+	err := repo.Find(&s)
 	return s, err
 }
 
 //FindFullByID
 func (repo *Attribute) FindFullByID(id int) (model.Attribute, error) {
-  var m model.Attribute
+	var m model.Attribute
 	m.ID = id
-  err := repo.FindWithPreload(&m)
+	err := repo.FindWithPreload(&m)
 	return m, err
 }
 
 //FindAll
 func (repo *Attribute) FindAllFull() ([]model.Attribute, error) {
-  var s []model.Attribute
-  err := repo.FindAllWithPreload(s)
+	var s []model.Attribute
+	err := repo.FindAllWithPreload(s)
 	return s, err
 }
 
 //FindAllFullByEntity
 func (repo *Attribute) FindAllFullByEntity(q *model.AttributeQuery, entityID int) ([]model.Attribute, error) {
-  var s []model.Attribute
+	var s []model.Attribute
 
 	condition, params := repo.BuildConditionParams(q)
 	condition = condition + "AND attributes.entity_id = ? "
 	params = append(params, entityID)
 	offset, limit := repo.GetOffsetLimit(q.Page, q.PageSize)
 
-  err := repo.FindAllByConditionWithPreload(&s, condition, params, offset, limit)
+	err := repo.FindAllByConditionWithPreload(&s, condition, params, offset, limit)
 
 	return s, err
 }

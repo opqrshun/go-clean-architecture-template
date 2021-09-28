@@ -72,7 +72,6 @@ func NewDBConfig() *DBConfig {
 	return &c
 }
 
-
 func GetAppConfig() *AppConfig {
 	return appConfig
 }
@@ -80,4 +79,3 @@ func GetAppConfig() *AppConfig {
 func GetDBConfig() *DBConfig {
 	return dbConfig
 }
-

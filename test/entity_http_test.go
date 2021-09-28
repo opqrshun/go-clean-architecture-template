@@ -129,4 +129,3 @@ func TestFindByIDEntityRoute(t *testing.T) {
 	assert.Equal(t, entity.Body, res.Body)
 	assert.Equal(t, entity.Body, res.Body)
 }
-

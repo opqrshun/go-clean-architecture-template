@@ -12,7 +12,7 @@ import (
 func TestStore(t *testing.T) {
 	repo := NewEntity()
 	_entity := model.Entity{
-		Body:  gofakeit.Sentence(1),
+		Body: gofakeit.Sentence(1),
 	}
 
 	id, _ := repo.Store(&_entity)
@@ -21,11 +21,10 @@ func TestStore(t *testing.T) {
 	assert.Equal(t, _entity.Body, entity.Body, "Should be equal")
 }
 
-
 func TestUpdateEntityRepo(t *testing.T) {
 	repository := NewEntity()
 	entity := model.Entity{
-		Body:  gofakeit.Sentence(1),
+		Body: gofakeit.Sentence(1),
 	}
 
 	id, _ := repository.Store(&entity)
@@ -46,13 +45,13 @@ func TestUpdateEntityRepo(t *testing.T) {
 func TestSearchEntities(t *testing.T) {
 	r := NewEntity()
 	entity := model.Entity{
-		Body:   "search target body",
+		Body: "search target body",
 	}
 
 	r.Store(&entity)
 
 	entity = model.Entity{
-		Body:   "search no target body",
+		Body: "search no target body",
 	}
 
 	r.Store(&entity)
@@ -63,6 +62,3 @@ func TestSearchEntities(t *testing.T) {
 	entities, _ := r.FindAllFull(&q)
 	assert.Contains(t, entities[0].Body, "search target")
 }
-
-
-

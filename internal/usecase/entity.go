@@ -11,9 +11,8 @@ type Entity struct {
 
 //Store
 func (usecase *Entity) Store(dto model.EntityDTO) (model.Entity, error) {
-	c := model.Entity{}
-	c.SetRequest(dto)
-	id, err := usecase.Repository.Store(&c)
+  p := model.ToEntity(dto)
+	id, err := usecase.Repository.Store(p)
 	if err != nil {
 		return model.Entity{}, err
 	}
@@ -24,13 +23,13 @@ func (usecase *Entity) Store(dto model.EntityDTO) (model.Entity, error) {
 
 // Update
 func (usecase *Entity) Update(dto model.EntityDTO) (model.Entity, error) {
-	c, err := usecase.GetTargetEntity(dto.ID)
+	m, err := usecase.GetTargetEntity(dto.ID)
 	if err != nil {
 		return model.Entity{}, err
 	}
-	c.SetRequest(dto)
+	m.SetRequest(dto)
 
-	id, err := usecase.Repository.Update(&c)
+	id, err := usecase.Repository.Update(&m)
 	if err != nil {
 		return model.Entity{}, err
 	}

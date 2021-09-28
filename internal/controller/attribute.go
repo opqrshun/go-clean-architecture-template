@@ -39,8 +39,9 @@ func (controller *Attribute) Create(c Context) {
 		controller.RespondInvalidRequest(c, err)
 		return
 	}
+  dto.EntityID = entityID
 
-	response, err := controller.usecase.Store(entityID, dto)
+	response, err := controller.usecase.Store(dto)
 	if err != nil {
 		controller.RespondWithError(c, err)
 		return

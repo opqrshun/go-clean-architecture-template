@@ -13,14 +13,16 @@ type Attribute struct {
 	DeletedAt gorm.DeletedAt
 }
 
-
-func (attribute *Attribute) SetRequest(dto AttributeDTO, entityID int) {
-	attribute.Body = dto.Body
-	attribute.EntityID = entityID
-	return
+//ToAttribute convert to Attribute, return Attribute pointer
+func ToAttribute(dto AttributeDTO) *Attribute{
+  return &Attribute{
+    EntityID:      dto.EntityID,
+		Body:          dto.Body,
+  }
 }
 
-func (attribute *Attribute) SetUpdateRequest(dto AttributeDTO) {
+
+func (attribute *Attribute) SetDTO(dto AttributeDTO) {
 	attribute.Body = dto.Body
 	return
 }

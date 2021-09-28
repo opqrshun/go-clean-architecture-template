@@ -8,12 +8,10 @@ type Attribute struct {
 	Repository AttributeRepository
 }
 
-func (usecase *Attribute) Store(entityID int, dto model.AttributeDTO ) (model.Attribute, error) {
-	//TODO init at once
-	m := model.Attribute{}
-	m.SetRequest(dto, entityID)
+func (usecase *Attribute) Store(dto model.AttributeDTO ) (model.Attribute, error) {
+  p := model.ToAttribute(dto)
 
-	id, err := usecase.Repository.Store(&m)
+	id, err := usecase.Repository.Store(p)
 	if err != nil {
 		return model.Attribute{}, err
 	}
@@ -28,7 +26,7 @@ func (usecase *Attribute) Update(dto model.AttributeDTO) (model.Attribute, error
 		return model.Attribute{}, err
 	}
 
-	m.SetUpdateRequest(dto)
+	m.SetDTO(dto)
 	id, err := usecase.Repository.Update(&m)
 	if err != nil {
 		return model.Attribute{}, err

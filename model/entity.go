@@ -14,6 +14,13 @@ type Entity struct {
 	Attributes []Attribute `json:"attributes,omitempty"`
 }
 
+//ToEntity convert to Entity, return Entity pointer
+func ToEntity(dto EntityDTO) *Entity{
+  return &Entity{
+		Body:              dto.Body,
+  }
+}
+
 func (entity *Entity) SetRequest(dto EntityDTO) {
 	entity.Body = dto.Body
 }

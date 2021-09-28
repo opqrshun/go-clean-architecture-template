@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// Event stores messages to log later, from our standard interface
+// Event
 type Event struct {
 	code       string
 	level      level
@@ -13,17 +13,6 @@ type Event struct {
 	displayMsg string
 }
 
-// type HTTPEvent struct {
-//   Event
-// }
-
-// type DBEvent struct {
-//   Event
-// }
-
-// type UsecaseEvent struct {
-//   Event
-// }
 
 var (
 	invalidArgValue = Event{

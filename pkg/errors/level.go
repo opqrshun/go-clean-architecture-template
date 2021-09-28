@@ -33,18 +33,19 @@ func (e *AppError) SetFatal() *AppError {
 	return e
 }
 
-func (e *AppError) IsInfo() bool  { return e.checkLevel(infoLevel) }
-func (e *AppError) IsWarn() bool  { return e.checkLevel(warnLevel) }
-func (e *AppError) IsError() bool { return e.checkLevel(errorLevel) }
-func (e *AppError) IsFatal() bool { return e.checkLevel(fatalLevel) }
+func (e *AppError) IsInfo() bool  {
+	return e.isLevel(infoLevel)
+}
+func (e *AppError) IsWarn() bool  {
+	 return e.isLevel(warnLevel)
+	}
+func (e *AppError) IsError() bool { 
+	return e.isLevel(errorLevel)
+}
+func (e *AppError) IsFatal() bool {
+	return e.isLevel(fatalLevel)
+}
 
-func (e *AppError) checkLevel(lv level) bool {
-	if e.level != `` {
-		return e.level == lv
-	}
-	var next *AppError
-	if errbase.As(e.err, &next) {
-		return next.checkLevel(lv)
-	}
-	return false
+func (e *AppError) isLevel(lv level) bool {
+	return e.level == lv
 }

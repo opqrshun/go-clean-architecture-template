@@ -2,9 +2,9 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	"gobackend/internal/controller"
-	"gobackend/pkg/errors"
-	"gobackend/pkg/logger"
+	"github.com/ttaki/go-clean-architecture-sample/internal/controller"
+	"github.com/ttaki/go-clean-architecture-sample/pkg/errors"
+	"github.com/ttaki/go-clean-architecture-sample/pkg/logger"
 )
 
 var Controller = controller.New(logger.GetLogger())

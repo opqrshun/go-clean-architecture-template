@@ -1,7 +1,7 @@
 package database
 
 import (
-	"gobackend/pkg/errors"
+	"github.com/ttaki/go-clean-architecture-sample/pkg/errors"
 )
 
 type Repository struct {

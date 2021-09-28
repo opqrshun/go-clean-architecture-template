@@ -2,7 +2,7 @@ package usecase
 
 import (
 	// "fmt"
-	"gobackend/model"
+	"github.com/ttaki/go-clean-architecture-sample/model"
 )
 
 type Entity struct {

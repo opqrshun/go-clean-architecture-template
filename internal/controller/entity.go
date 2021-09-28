@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	repo "gobackend/internal/repository/database"
-	"gobackend/internal/usecase"
-	"gobackend/model"
+	repo "github.com/ttaki/go-clean-architecture-sample/internal/repository/database"
+	"github.com/ttaki/go-clean-architecture-sample/internal/usecase"
+	"github.com/ttaki/go-clean-architecture-sample/model"
 )
 
 //Entity type

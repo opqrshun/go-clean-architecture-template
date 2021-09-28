@@ -12,8 +12,8 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	"gobackend/internal/controller"
-	"gobackend/pkg/logger"
+	"github.com/ttaki/go-clean-architecture-sample/internal/controller"
+	"github.com/ttaki/go-clean-architecture-sample/pkg/logger"
 )
 
 var Entity = controller.NewEntity(logger.GetLogger())

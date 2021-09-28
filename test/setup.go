@@ -1,8 +1,8 @@
 package test
 
 import (
-	repo "gobackend/internal/repository/database"
-	"gobackend/model"
+	repo "github.com/ttaki/go-clean-architecture-sample/internal/repository/database"
+	"github.com/ttaki/go-clean-architecture-sample/model"
 
 	"github.com/brianvoe/gofakeit"
 )

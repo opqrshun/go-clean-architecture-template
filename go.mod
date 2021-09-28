@@ -1,4 +1,4 @@
-module gobackend
+module github.com/ttaki/go-clean-architecture-sample
 
 go 1.16
 

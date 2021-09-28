@@ -6,7 +6,7 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/stretchr/testify/assert"
 
-	"gobackend/model"
+	"github.com/ttaki/go-clean-architecture-sample/model"
 )
 
 func TestStore(t *testing.T) {

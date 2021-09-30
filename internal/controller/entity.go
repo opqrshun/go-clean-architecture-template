@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	repo "github.com/ttaki/go-clean-architecture-template/internal/repository/database"
+	repo "github.com/ttaki/go-clean-architecture-template/internal/infrastructure/database"
 	"github.com/ttaki/go-clean-architecture-template/internal/usecase"
 	"github.com/ttaki/go-clean-architecture-template/model"
 )

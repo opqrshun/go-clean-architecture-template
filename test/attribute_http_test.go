@@ -4,7 +4,7 @@ import (
 	// "bytes"
 	"encoding/json"
 	"fmt"
-	sw "github.com/ttaki/go-clean-architecture-template/internal/api/http"
+	sw "github.com/ttaki/go-clean-architecture-template/internal/router/http"
 	"net/http"
 	"net/http/httptest"
 	"strconv"

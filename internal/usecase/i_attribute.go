@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	repo "github.com/ttaki/go-clean-architecture-template/internal/repository/database"
+	repo "github.com/ttaki/go-clean-architecture-template/internal/infrastructure/database"
 	"github.com/ttaki/go-clean-architecture-template/model"
 )
 

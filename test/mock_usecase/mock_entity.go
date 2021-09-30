@@ -5,7 +5,7 @@
 package mock_usecase
 
 import (
-	database "github.com/ttaki/go-clean-architecture-template/internal/repository/database"
+	database "github.com/ttaki/go-clean-architecture-template/internal/infrastructure/database"
 	model "github.com/ttaki/go-clean-architecture-template/model"
 	reflect "reflect"
 

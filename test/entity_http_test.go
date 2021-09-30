@@ -14,7 +14,7 @@ import (
 	// "github.com/stretchr/testify/suite"
 
 	// "github.com/ttaki/go-clean-architecture-template/pkg/identifier"
-	sw "github.com/ttaki/go-clean-architecture-template/internal/api/http"
+	sw "github.com/ttaki/go-clean-architecture-template/internal/router/http"
 )
 
 func TestPingEntityRoute(t *testing.T) {

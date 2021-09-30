@@ -9,6 +9,6 @@ import (
 func TestStore(t *testing.T) {
 	h := NewAPIHandler()
 
-	err := h.Find()
+	err := h.Ping()
 	assert.NoError(t, err, "Should be no error")
 }

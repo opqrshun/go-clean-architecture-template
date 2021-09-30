@@ -13,7 +13,6 @@ type Event struct {
 	displayMsg string
 }
 
-
 var (
 	invalidArgValue = Event{
 		"invalid_arg_value",

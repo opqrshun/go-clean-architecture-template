@@ -38,7 +38,7 @@ func (repo *Attribute) FindFullByID(id int) (model.Attribute, error) {
 //FindAll
 func (repo *Attribute) FindAllFull() ([]model.Attribute, error) {
 	var s []model.Attribute
-	err := repo.FindAllWithPreload(s)
+	err := repo.FindAllWithPreload(&s)
 	return s, err
 }
 

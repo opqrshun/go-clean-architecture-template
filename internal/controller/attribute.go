@@ -94,6 +94,7 @@ func (controller *Attribute) FindAllByEntity(c Context) {
 	q := model.AttributeQuery{}
 	if err := c.ShouldBindQuery(&q); err != nil {
 		controller.RespondInvalidRequest(c, err)
+		return
 	}
 
 	response, err := controller.usecase.FindAllByEntity(&q, entityID)

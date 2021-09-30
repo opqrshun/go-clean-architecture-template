@@ -38,10 +38,9 @@ func (repo *Entity) FindAllFull(q *model.EntityQuery) ([]model.Entity, error) {
 	return s, err
 }
 
-//BuildConditionParams
+// BuildConditionParams
+// build condition deleted_at is NULL
 func (repo *Entity) BuildConditionParams(q *model.EntityQuery) (condition string, params []interface{}) {
-	//TODO seaach body like
-	// build condition deleted_at=0
 	condition = "entities.deleted_at is NULL "
 
 	if q.Query != "" {

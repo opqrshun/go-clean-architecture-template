@@ -36,7 +36,6 @@ type Route struct {
 // Routes is the list of the generated Route.
 type Routes []Route
 
-
 ////UseSentryLocalHub
 //func UseSentryLocalHub (ctx *gin.Context, tagKey string,tagValue string) {
 //  if hub := sentrygin.GetHubFromContext(ctx); hub != nil {

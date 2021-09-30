@@ -29,13 +29,13 @@ func (e *AppError) SetFatal() *AppError {
 	return e
 }
 
-func (e *AppError) IsInfo() bool  {
+func (e *AppError) IsInfo() bool {
 	return e.isLevel(infoLevel)
 }
-func (e *AppError) IsWarn() bool  {
-	 return e.isLevel(warnLevel)
-	}
-func (e *AppError) IsError() bool { 
+func (e *AppError) IsWarn() bool {
+	return e.isLevel(warnLevel)
+}
+func (e *AppError) IsError() bool {
 	return e.isLevel(errorLevel)
 }
 func (e *AppError) IsFatal() bool {

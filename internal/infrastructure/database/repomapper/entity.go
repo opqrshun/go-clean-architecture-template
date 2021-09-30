@@ -1,4 +1,4 @@
-package repomodel
+package repomapper
 
 import (
 // "gorm.io/gorm"

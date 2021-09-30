@@ -1,4 +1,4 @@
-package extapimodel
+package extapimapper
 
 import (
 // "gorm.io/gorm"

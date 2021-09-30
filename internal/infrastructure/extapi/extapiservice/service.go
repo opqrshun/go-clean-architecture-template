@@ -3,7 +3,7 @@ package extapiservice
 import (
 	"net/http"
 
-	apimodel "github.com/ttaki/go-clean-architecture-template/internal/infrastructure/extapi/extapimodel"
+	mapper "github.com/ttaki/go-clean-architecture-template/internal/infrastructure/extapi/extapimapper"
 )
 
 // Entity
@@ -20,6 +20,6 @@ func New(c *http.Client) *Service {
 	}
 }
 
-func (s *Service) Complex(m *apimodel.User) (apimodel.User, error) {
-	return apimodel.User{}, nil
+func (s *Service) Complex(m *mapper.User) (mapper.User, error) {
+	return mapper.User{}, nil
 }

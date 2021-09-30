@@ -20,10 +20,15 @@ type (
 		Protocol string `env:"MYSQL_PROTOCOL",notEmpty`
 		Database string `env:"MYSQL_DATABASE",notEmpty`
 	}
+
+	ExtAPIConfig struct {
+		URL string `env:"EXTERNAL_API_URL",notEmpty`
+	}
 )
 
 var appConfig *AppConfig
 var dbConfig *DBConfig
+var extAPIConfig *ExtAPIConfig
 
 func init() {
 	log.Print("loading .env file")
@@ -35,6 +40,8 @@ func init() {
 
 	appConfig = NewAppConfig()
 	dbConfig = NewDBConfig()
+	extAPIConfig = NewExtAPIConfig()
+
 }
 
 func isLocal() bool {
@@ -72,10 +79,22 @@ func NewDBConfig() *DBConfig {
 	return &c
 }
 
+func NewExtAPIConfig() *ExtAPIConfig {
+	log.Print("loading ExtAPIConfig")
+	var c ExtAPIConfig
+	parseEnv(&c)
+
+	return &c
+}
+
 func GetAppConfig() *AppConfig {
 	return appConfig
 }
 
 func GetDBConfig() *DBConfig {
 	return dbConfig
+}
+
+func GetExtAPIConfig() *ExtAPIConfig {
+	return extAPIConfig
 }

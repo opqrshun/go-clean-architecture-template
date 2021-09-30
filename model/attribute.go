@@ -4,6 +4,8 @@ import (
 	"gorm.io/gorm"
 )
 
+// Attribute
+// TODO Avoid dependence on gorm.
 type Attribute struct {
 	Base
 	Body     string `json:"body,omitempty"`
